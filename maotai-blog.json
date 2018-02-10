@@ -1,0 +1,102 @@
+[
+    {
+        "date": "2017-03-18T20:53:54+08:00",
+        "uri": "about",
+        "objectID": "about",
+        "title": "About me",
+        "tags": [
+            "me"
+        ],
+        "subtitle": "毛台",
+        "description": "Mao Tai(毛台) - Cloud Native and Big Data",
+        "nocomment": true,
+        "postmeta": false,
+        "seealso": false,
+        "bigimg": [
+            {
+                "src": "https://ws1.sinaimg.cn/large/9e792b8fgy1fobeflhwlvj20wt0hd1kx.jpg",
+                "desc": "抽到断水水更流"
+            }
+        ]
+    },
+    {
+        "title": "Ansible常用知识点",
+        "uri": "posts/ansible常用知识点",
+        "objectID": "posts/ansible常用知识点",
+        "subtitle": "这是毛台闲的蛋疼的时候,学了下ansible做的总结.",
+        "description": "Ansible常用知识点,这是毛台闲的蛋疼的时候,学了下ansible做的总结.",
+        "date": "2018-02-09T08:00:15.000Z",
+        "tags": [
+            "linux",
+            "svc"
+        ],
+        "categories": "Linux",
+        "bigimg": [
+            {
+                "src": "https://ws1.sinaimg.cn/large/9e792b8fgy1fobf51r0a6j22bk1jk4qw.jpg",
+                "desc": ""
+            }
+        ],
+        "draft": false
+    },
+    {
+        "title": "linux常用手头命令",
+        "uri": "posts/linux常用手头命令",
+        "objectID": "posts/linux常用手头命令",
+        "subtitle": "着急用的时候查的,查到后解决了问题做的笔录",
+        "description": "linux常用手头命令,着急用的时候查的,查到后解决了问题做的笔录",
+        "date": "2018-02-10T06:49:15.000Z",
+        "tags": [
+            "linux",
+            "svc"
+        ],
+        "categories": "Linux",
+        "bigimg": [
+            {
+                "src": "https://ws1.sinaimg.cn/large/9e792b8fgy1fobeuq0l1wj218g0tu1ky.jpg",
+                "desc": ""
+            }
+        ],
+        "draft": false
+    },
+    {
+        "title": "Setting Up a Kubernetes Cluster With Vagrant and Virtualbox",
+        "uri": "posts/setting-up-a-kubernetes-cluster-with-vagrant",
+        "objectID": "posts/setting-up-a-kubernetes-cluster-with-vagrant",
+        "subtitle": "With one master and 3 node, Dashboard, CoreDNS and Heapster monitoring",
+        "date": "2018-02-04T01:55:58.000Z",
+        "description": "Setting Up a Kubernetes Cluster With Vagrant and Virtualbox with one master and 3 node, Dashboard, CoreDNS and Heapster monitoring",
+        "tags": [
+            "kubernetes",
+            "vagrant"
+        ],
+        "categories": "Golang",
+        "bigimg": [
+            {
+                "src": "https://res.cloudinary.com/jimmysong/image/upload/images/2018020402.jpg",
+                "desc": ""
+            }
+        ],
+        "draft": false
+    },
+    {
+        "date": "2017-03-18T20:53:54+08:00",
+        "uri": "resume",
+        "objectID": "resume",
+        "title": "Mao Tai",
+        "tags": [
+            "me"
+        ],
+        "subtitle": "毛台",
+        "description": "Mao Tai(毛台) - Cloud Native and Big Data",
+        "nocomment": true,
+        "postmeta": false,
+        "seealso": false,
+        "bigimg": [
+            {
+                "src": "https://ws1.sinaimg.cn/large/9e792b8fgy1fobeb1fxymj20ma0ev4qp.jpg",
+                "desc": "抽刀断水水更流"
+            }
+        ]
+    }
+]
