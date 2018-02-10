@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 毛台在线</title>
-    <link>https://lannyMa.github.io/posts/</link>
-    <description>Recent content in Posts on 毛台在线</description>
+    <title>Svc on 毛台在线</title>
+    <link>https://lannyMa.github.io/tags/svc/</link>
+    <description>Recent content in Svc on 毛台在线</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <managingEditor>ihorse@foxmail.com (Mao Tai)</managingEditor>
     <webMaster>ihorse@foxmail.com (Mao Tai)</webMaster>
     <lastBuildDate>Fri, 09 Feb 2018 16:00:15 +0800</lastBuildDate>
     
-	<atom:link href="https://lannyMa.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lannyMa.github.io/tags/svc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,15 +20,6 @@
       <author>ihorse@foxmail.com (Mao Tai)</author>
       <guid>https://lannyMa.github.io/posts/ansible%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
       <description>vagrant destroy rm -rf .vagrant 01ansib生产 安装包 yum install -y libselinux-python 在通过执行 play脚本的过程中 有步骤结束后 必须重启一下 目标电脑 - name: Waiting for server to come back local_action: wait_for host={{ ansible_host }} port=22 state=started delay=30 timeout=600 become:</description>
-    </item>
-    
-    <item>
-      <title>Setting Up a Kubernetes Cluster With Vagrant and Virtualbox</title>
-      <link>https://lannyMa.github.io/posts/setting-up-a-kubernetes-cluster-with-vagrant/</link>
-      <pubDate>Sun, 04 Feb 2018 09:55:58 +0800</pubDate>
-      <author>ihorse@foxmail.com (Mao Tai)</author>
-      <guid>https://lannyMa.github.io/posts/setting-up-a-kubernetes-cluster-with-vagrant/</guid>
-      <description>这是一个测试文章,老宋的 Setting up a kubernetes cluster with Vagrant and Virtualbox Using vagrant file to build a kubernetes cluster which consists of 1 master(also as node) and 3 nodes. You don&amp;rsquo;t have to create complicated ca files or configuration. See in Github: kubernetes-vagrant-centos-cluster Why don&amp;rsquo;t do that with kubeadm Because I want to setup the etcd, apiserver, controller, scheduler without</description>
     </item>
     
   </channel>

@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title> Ansible常用知识点 - lannyMa.github.io|毛台的博客|Cloud Native|Big Data</title>
+  <meta name="description" content="lannyMa.github.io|毛台的博客|Cloud Native|Big Data" />
+  <meta property="og:title" content="Ansible常用知识点" />
+  <meta name="twitter:title" content="Ansible常用知识点" />
+  <meta name="description" content="Ansible常用知识点,这是毛台闲的蛋疼的时候,学了下ansible做的总结.">
+  <meta property="og:description" content="Ansible常用知识点,这是毛台闲的蛋疼的时候,学了下ansible做的总结.">
+  <meta name="twitter:description" content="Ansible常用知识点,这是毛台闲的蛋疼的时候,学了下ansible做的总结.">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='https://raw.githubusercontent.com/lannyMa/scripts/master/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://ws1.sinaimg.cn/large/9e792b8fgy1fobd1r0mnqj2069069jra.jpg" />
+  <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/9e792b8fgy1fobd1r0mnqj2069069jra.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://lannyMa.github.io/posts/ansible%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="毛台在线" />
+
+  <meta name="generator" content="Hugo 0.36" />
+  <link rel="canonical" href="https://lannyMa.github.io/posts/ansible%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/" />
+  <link rel="alternate" href="https://lannyMa.github.io/index.xml" type="application/rss+xml" title="毛台在线">
+  <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/jquery-1.12.4.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="https://lannyMa.github.io/css/main.css" />
+  <link rel="stylesheet" href="https://lannyMa.github.io/css/search.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  
+
+<meta name="baidu-site-verification" content="g8IYR9SNLF" />
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?11f7d254cfa4e0ca44b175c66d379ecc";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<link rel="stylesheet" href="https://lannyMa.github.io/css/prism.css" />
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://lannyMa.github.io/">毛台在线</a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Py</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://lannyMa.github.io/categories/kubernetes">Django</a>
+                
+                
+                  <a href="https://lannyMa.github.io/categories/kubernetes">Flask</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Golang" href="/">Golang</a>
+              
+              
+            </li>
+          
+        
+          
+            <li>
+              <a title="Linux" href="/">Linux</a>
+              
+              
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+              
+              
+            </li>
+          
+        
+
+        
+
+        
+        
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="毛台在线" href="https://lannyMa.github.io/">
+            <img class="avatar-img" src="https://ws1.sinaimg.cn/large/9e792b8fgy1fobd1r0mnqj2069069jra.jpg" alt="毛台在线" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Search jimmysong.io</h4>
+        </div>
+        <div class="modal-body">
+            
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..." name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+
+
+
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex('rootsongjc-hugo');
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            
+            return '<span>' + '<a href="/' + suggestion.uri+ '">' +
+            suggestion._highlightResult.title.value + '</a></span>';
+        }
+    }
+});
+</script>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://ws1.sinaimg.cn/large/9e792b8fgy1fobf51r0a6j22bk1jk4qw.jpg" ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        
+        <div class="container">
+          <div class="row">
+              <div class="col-lg-12 col-md-12 col-md-offset-0">
+                
+                <div class="post-heading">
+                
+                  
+                     <h1>Ansible常用知识点</h1>
+                     
+                     
+                  
+                  
+                  
+                    
+                      <hr class="small">
+                      <span class="post-subheading">这是毛台闲的蛋疼的时候,学了下ansible做的总结.</span>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  发表于 February 9, 2018
+  
+  
+</span>
+
+
+                  
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
+            <div class="posts-heading">
+                <h1 align="center">Ansible常用知识点</h1>
+                
+                  
+                    <h2 align="center" class="posts-subheading">这是毛台闲的蛋疼的时候,学了下ansible做的总结.</h2>
+                  
+                
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Fri Feb 9, 2018</h4>
+    </section>
+    <h5 id="wc">8900 Words|Read in about 18 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://lannyMa.github.io/tags/linux/">linux</a> &nbsp;
+        
+        <a href="https://lannyMa.github.io/tags/svc/">svc</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+
+<pre><code class="language-bash">vagrant destroy
+rm -rf .vagrant
+</code></pre>
+
+<h1 id="01ansib生产">01ansib生产</h1>
+
+<p><img src="https://ws1.sinaimg.cn/large/9e792b8fgy1fobcxgf6obj20aq09hwiq.jpg" alt="" /></p>
+
+<h2 id="安装包">安装包</h2>
+
+<pre><code>yum install -y libselinux-python
+</code></pre>
+
+<h2 id="在通过执行-play脚本的过程中-有步骤结束后-必须重启一下-目标电脑-http-docs-ansible-com-ansible-latest-wait-for-connection-module-html"><a href="http://docs.ansible.com/ansible/latest/wait_for_connection_module.html">在通过执行 play脚本的过程中 有步骤结束后 必须重启一下 目标电脑</a></h2>
+
+<pre><code>- name: Waiting for server to come back
+  local_action: wait_for host={{ ansible_host }} port=22 state=started delay=30 timeout=600
+  become: no
+
+</code></pre>
+
+<h2 id="关于用户">关于用户</h2>
+
+<p>1,批量创建用用户</p>
+
+<pre><code>ansible all -m shell -a 'useradd apps -m -d /home/apps -s /bin/bash -u 2222'
+ansible all -m shell -a 'useradd apps -u 2222'
+</code></pre>
+
+<p>检查</p>
+
+<pre><code>ansible all -m shell -a &quot;id apps&quot;
+</code></pre>
+
+<p>2.批量修改密码</p>
+
+<pre><code>$ ansible all -m shell -a 'echo apps:ABCedf123 | chpasswd' #centos 7
+$ ansible all -m shell -a 'echo ABCedf123 | passwd --stdin apps' #centos 6
+</code></pre>
+
+<p>3.批量做互信</p>
+
+<pre><code>$ su - apps &amp;&amp; ssh-keygen
+$ ansible web -m authorized_key -a &quot;user=apps state=present key=\&quot;{{ lookup('file', '/home/apps/.ssh/id_rsa.pub') }}\&quot;&quot; -k
+
+</code></pre>
+
+<h2 id="过滤setup内容">过滤setup内容</h2>
+
+<pre><code>ansible 192.168.14.132 -m setup -a 'filter=ansible_all_ipv4_addresses' -o
+
+ansible 192.168.14.132 -m setup
+ansible 192.168.14.132 -m setup -a 'filter=ansible_all_ipv4_addresses'
+</code></pre>
+
+<p>playbook的过滤: 返回的ansible_eth0是字典.可以过滤</p>
+
+<pre><code>[root@node1 ~]# cat t.yml
+- hosts: 192.168.14.133
+  tasks:
+    - debug: msg=&quot;{{ ansible_eth0['device'] }}&quot;
+</code></pre>
+
+<p>这样就有问题了</p>
+
+<pre><code>ansible all -m setup -a &quot;filter=ansible_eth0['device']&quot;
+ansible all -m setup -a &quot;filter=ansible_eth0|ipv4&quot;
+</code></pre>
+
+<pre><code>- hosts: 192.168.14.132
+  tasks:
+    - debug: msg=&quot;{{ ansible_user_shell }}&quot;
+</code></pre>
+
+<p>这样ok</p>
+
+<pre><code>ansible all -m setup -a 'filter=ansible_eth[0-2]'
+</code></pre>
+
+<h2 id="修改内核参数">修改内核参数</h2>
+
+<pre><code># 开启路由转发的功能
+- sysctl: name=&quot;net.ipv4.ip_forward&quot; value=1 sysctl_set=yes
+</code></pre>
+
+<h2 id="ansible多线程">ansible多线程</h2>
+
+<p>ansible在多任务下，推荐使用多进程模式的。其实就是用multiprocess做的多进程池 ！  -f 10  就是limit 10个任务并发。</p>
+
+<h2 id="书写格式">书写格式</h2>
+
+<pre><code>- hosts: 192.168.14.133
+  tasks:
+  - debug: msg=&quot;hi1&quot;
+  - debug: msg=&quot;hi2&quot;
+
+</code></pre>
+
+<p>也就是很多笔记这样写的原因了.</p>
+
+<pre><code>- lineinfile: dest=/etc/selinux/config regexp=^SELINUX= line=SELINUX=enforcing      # 将以“SELINUX”开头的行换成 “SELINUX=enforcing”
+- lineinfile: dest=/etc/sudoers state=absent regexp=&quot;^%wheel&quot;                       # 将以 %wheel 开头的行删除
+- lineinfile: dest=/etc/hosts regexp='^127\.0\.0\.1' line='127.0.0.1 localhost' owner=root group=root mode=0644
+- lineinfile: dest=/etc/httpd/conf/httpd.conf regexp=&quot;^Listen &quot; insertafter=&quot;^#Listen &quot; line=&quot;Listen 8080&quot; # 将以 #Listen 开头行的下面的 以Listen开头的行换成  Listen 8080
+- lineinfile: dest=/etc/httpd/conf/httpd.conf insertafter=&quot;^#Listen &quot; line=&quot;Listen 8080&quot;            # 在 #Listen 开头行的下面的 添加 Listen 8080 新行
+- lineinfile: dest=/etc/httpd/conf/httpd.conf regexp=&quot;^Listen &quot; insertbefore=&quot;^#Listen &quot; line=&quot;Listen 8080&quot; # 将以 #Listen 开头行的上面的 以Listen开头的行换成  Listen 8080
+- lineinfile: dest=/tmp/testfile line=&quot;192.168.1.99 foo.lab.net foo&quot;  # 添加一个新行
+
+</code></pre>
+
+<h2 id="可以写一行">可以写一行</h2>
+
+<pre><code>  - name: Copy Nginx Software To Redhat Client
+    copy: src=nginx-{{ nginx_version }}.tar.gz dest=/tmp/nginx-{{ nginx_version }}.tar.gz owner=root group=root
+    when: ansible_os_family == &quot;RedHat&quot; and ansible_distribution_version|int &gt;=6
+  - name: Uncompression Nginx Software To Redhat Client
+    shell: tar zxf /tmp/nginx-{{ nginx_version }}.tar.gz -C /usr/local/
+    when: ansible_os_family == &quot;RedHat&quot; and ansible_distribution_version|int &gt;=6
+  - name: Copy Nginx Start Script To Redhat Client
+    template: src=nginx dest=/etc/init.d/nginx owner=root group=root mode=0755
+    when: ansible_os_family == &quot;RedHat&quot; and ansible_distribution_version|int &gt;=6
+  - name: Copy Nginx Config To Redhat Client
+    template: src=nginx.conf dest=/usr/local/nginx-{{ nginx_version }}/conf/ owner=root group=root mode=0644
+    when: ansible_os_family == &quot;RedHat&quot; and ansible_distribution_version|int &gt;=6
+  - name: Copy Nginx Vhost Config to RedHat Client
+    template: src=vhost.conf dest=/usr/local/nginx-{{ nginx_version }}/conf/vhost/ owner=root group=root mode=0644
+    when: ansible_os_family == &quot;RedHat&quot; and ansible_distribution_version|int &gt;=6
+</code></pre>
+
+<h2 id="ansible安装zabiix">ansible安装zabiix</h2>
+
+<pre><code>---
+  - hosts: &quot;{{ host }}&quot;
+    remote_user: &quot;{{ user }}&quot;
+    gather_facts: false
+    tasks:
+        - name: Install the 'Development tools' package group
+          yum:
+              name: &quot;@Development tools&quot;
+              state: present
+          tags:
+              - Dev_tools
+
+        - name: Install packages
+          yum: state=present name={{ item }}
+          with_items:
+              - gcc
+              - gcc-c++
+              - autoconf
+              - automake
+              - libxml2-devel
+              - sysstat
+              - vim
+              - iotop
+              - unzip
+              - htop
+              - iotop
+              - strace
+              - wget
+              - tar
+              - libselinux-python
+              - rsync
+              - rdate
+          tags:
+              - packages
+        - name: Selinux modify disabled
+          lineinfile:
+              dest: /etc/selinux/config
+              regexp: '^SELINUX='
+              line: 'SELINUX=disabled'
+          tags:
+              - testselinux
+
+        - name: Modify lineinfile
+          lineinfile:
+              dest: &quot;{{ item.dest }}&quot;
+              state: present
+              regexp: &quot;{{ item.regexp }}&quot;
+              line: &quot;{{ item.line }}&quot;
+              validate: 'visudo -cf %s'
+          with_items:
+                # - {
+                #   dest: &quot;/etc/zabbix/zabbix_agentd.conf&quot;,
+                #   regexp: &quot;^Include&quot;,
+                #   line: &quot;\n\n###Add include\nInclude=/etc/zabbix/zabbix_agentd.conf.d/*.conf&quot; }
+              - {
+                dest: &quot;/etc/sudoers&quot;,
+                regexp: &quot;^Defaults    requiretty&quot;,
+                line: &quot;# Defaults    requiretty&quot; }
+          tags:
+              - testline
+
+        - name: Copy configuration file
+          copy:
+              src=\'#\'&quot; /etc/init.d/zabbix_agentd&quot;,
+                dest: &quot;/etc/init.d/zabbix_agentd&quot;,
+                mode: &quot;0755&quot;}
+          tags:
+              - testcopy
+        - name: Create a directory
+          file: path={{ item }} state=directory mode=0750
+          with_items:
+              - /etc/sudoers.d
+          tags:
+              - testdir
+
+        - name: Looping over Fileglobs
+          copy: src={{ item }} dest=/etc/sudoers.d/ owner=root mode=0440
+          with_fileglob:
+              - /etc/sudoers.d/*
+          tags:
+              - test_fileglobs
+
+        - name: synchronization of src on the control machine to dest on the remote hosts
+          synchronize:
+            src=\'#\'&quot; /etc/zabbix&quot;,
+                dest: &quot;/etc/&quot;}
+              - {
+                src=\'#\'&quot; /usr/local/zabbix&quot;,
+                dest: &quot;/usr/local/&quot;}
+          tags:
+              - sys_dir
+
+        - name: Ensure two job that runs of crontab
+          cron:
+            name: &quot;{{ item.name }}&quot;
+            minute: &quot;{{ item.minute}}&quot;
+            job: &quot;{{ item.job}}&quot;
+          with_items:
+                - {
+                  name: &quot;Time synchronization&quot;,
+                  minute: &quot;10&quot;,
+                  job: &quot;/usr/bin/rdate -s 192.168.1.163 &gt; /dev/null 2&gt;&amp;1&quot;}
+                - {
+                  name: &quot;a job vmstat_output&quot;,
+                  minute: &quot;1&quot;,
+                  job: &quot;vmstat 1 10 &gt; /tmp/vmstat_output&quot;}
+                - {
+                  name: &quot;a job iostat_output&quot;,
+                  minute: &quot;1&quot;,
+                  job: &quot;bin/bash /usr/local/zabbix/script/iostat.sh&quot;}
+          tags:
+              - testcron
+
+        - name: Starting zabbix_agentd
+          shell: /usr/local/zabbix/script/zabbix_agent.sh
+          tags:
+              - starting_zabbix_aqentd
+
+        - name: Install omsa
+          shell: sh /usr/local/zabbix/script/dell.sh
+          tags:
+              - install_omsa
+</code></pre>
+
+<h1 id="02ansible常用">02ansible常用</h1>
+
+<h2 id="ansible配置文件">ansible配置文件</h2>
+
+<pre><code>yum install -y libselinux-python
+</code></pre>
+
+<pre><code>/etc/ansible/ansible.cfg(主要参数解析,这里主要有两个需要解释的选项)
+  library        = /usr/share/ansible  #ansible模块存放位置
+  remote_tmp     = $HOME/.ansible/tmp  #客户端临时文件的路径(ansible通过ssh通道在远程主机上根据playbook生成对应的临时python代码,
+                                       #然后远程执行这一段临时代码,
+                                       #并在执行完成后删除,
+                                       #我们在执行的时候可以去客户端执行ps命令看到这个过程的)
+/etc/ansible/hosts  (主机配置文件)
+  文件的配置格式为
+  [definename]
+  host or hostname
+  #在定义主机的时候,主要需要注意的有
+  1) 要以主机名定义客户机的时候要保证server端能够正确的解析这个主机名;
+  2) 主机定义的时候可以有很多匹配规则,如web-[a-z].host.com,db-[01:30].host.com;
+</code></pre>
+
+<h2 id="ansible命令格式">ansible命令格式</h2>
+
+<pre><code>#命令格式:
+ansible all -m copy -a 'src=/etc/my.cnf dest=/etc/'
+</code></pre>
+
+<p>几个重要参数的含义:
+-i    #指定inventory文件(主机定义文件) 栗子: <code>ansible -i test all -m ping</code>
+all   #表示在host文件中定义的所有的主机,可以替换成响应的组名或IP地址</p>
+
+<p>针对于主机可以使用匹配规则(所有的匹配都基于配置文件中的主机)
+  IP地址: ansible  192.168.239.132  栗子: ansible -i test 192.168.14.13* -m ping
+  IP匹配: ansible  192.168.239.*
+  IP匹配: ansible  *
+  组匹配: ansible 组名:&amp;hostname     &lt;表示这个组跟其他组的一个主机&gt;
+  组匹配: ansible 组名:!hostname     &lt;表示这个组但是出除去这个组的这个主机&gt;
+类似的匹配还很多,几乎能想到的匹配都能支持,具体参照<a href="http://docs.ansible.com/intro_patterns.html">http://docs.ansible.com/intro_patterns.html</a>
+-m    #指定使用哪个模块,默认采用command模块
+-a    #指定模块的参数,每个模块都有相应的模块参数
+-u    #指定远端机器的用户</p>
+
+<h2 id="查看帮助">查看帮助</h2>
+
+<p>列出模块</p>
+
+<pre><code>ansible-doc -l
+</code></pre>
+
+<p>查看某一模块详情</p>
+
+<pre><code>ansible-doc ping
+</code></pre>
+
+<p>查看参数</p>
+
+<pre><code>ansible-doc -s ping
+</code></pre>
+
+<p>参数</p>
+
+<pre><code>ansible all -m ping -o -f 3
+</code></pre>
+
+<p>初始化目录结构</p>
+
+<pre><code>ansible-galaxy init test1
+</code></pre>
+
+<h2 id="常用模块">常用模块</h2>
+
+<pre><code>command   &lt;执行linux命令的&gt;
+  #ansible all  -m command -a 'ifconfig'
+
+copy     &lt;实现文件复制&gt;
+  #ansible all  -m copy -a 'src=/etc/my.cnf dest=/etc/my.cnf owner=mysql group=mysql' #owner group 可以根据选择自定义的决定要不要指定
+
+file    &lt;实现目录文件权限的修改/创建与删除&gt;
+  #ansible all -m file -a 'dest=/etc/rsync.d/secrets  mode=600 owner=root group=root'
+  #ansible all -m file -a 'dest=/data/install mode=755 owner=root grou=root state=directory' #创建这个不存在的目录
+  #ansible all -m file -a 'dest=/data/tmp state=absent'  #删除这个目录
+
+yum     &lt;使用yum进行软件包的管理&gt;
+  #ansible all -m yum -a 'name=httpd state=installed'
+
+  更新包:
+  ansible all -m yum -a 'name=htop state=latest'
+
+service   &lt;管理linux系统服务&gt;
+  #ansible all -m service -a 'name=httpd state=started'
+  #state选项主要有:started,stopped,restarted,reloaded
+
+cront      &lt;管理linux计划任务&gt;
+  #ansible all -m cron -a 'name=&quot;you autoupdate&quot; weekday=&quot;2&quot; minute=0 hour=12 user=&quot;root&quot; job=&quot;/usr/sbin/yum-autoupdate&quot; cron_file=ansible_yum-autoupdate'
+  栗子:
+  ansible all -m cron -a &quot;name=ntpdate job=ntpdate ntp.pool.ntp.org&quot; hour=*/2 user=&quot;root&quot;
+
+</code></pre>
+
+<h2 id="帮助">帮助</h2>
+
+<pre><code>ansible-doc modulename
+</code></pre>
+
+<h2 id="常见模块主要参数">常见模块主要参数</h2>
+
+<pre><code>yum模块中:
+关于yum模块有几个状态参数&lt;即state=&gt;
+  latest    #安装最新的一个版本
+  installed #安装一个包
+  removed   #卸载已经安装的软件包
+  present   #安装指定的软件包&lt;需要提供软件包的位置&gt;,如
+#yum: name=http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm state=present
+#yum: name=/usr/local/src/nginx-release-centos-6-0.el6.ngx.noarch.rpm state=present
+关于name参数的选项&lt;即name=&gt;
+
+
+  *       #匹配所有的已经安装的包
+#ansible all -m yum -a 'name=* state=latest'  #表示更新所有的已经安装的rpm包
+
+
+  @       #表示安装软件包组
+#ansible all -m yum -a 'name=@Development Tools state=present'
+</code></pre>
+
+<p>service模块中:
+  #state选项有start,restart,stop
+  <code>ansible 192.168.14.132 -m service -a &quot;name=nginx state=restarted enabled=yes&quot;</code></p>
+
+<p>cron,模块中:
+  name     #相当于计划任务的注释说明,会在crontab里面以注释行的形式出现
+  关于时间的定义
+   #minute  #指定分的格式:*(每分)(默认值) */5(每五分) 01(01分) 15(15分)
+   #hour    #指定小时的格式: *(每小时)(默认值) */5(没五小时) 01(1点) 15(15点)
+   #day     #指定天的格式: *(每天)(默认值) */5(每五天) 01(每个的1日)  (0-31)
+   #month   #指定月的格式: *(每月)(默认值) */5(每五个月) 01(一月) (1-12)
+   #weekday #指定周的日期: *(每周)(默认值) */2(每两周) 1(周一)(1-7)
+  reboot  #这个计划任务是否等下次重启后再生效
+  user    #指定哪个用户的计划任务</p>
+
+<h2 id="playbook语法格式">playbook语法格式</h2>
+
+<h2 id="ansible-playbook">ansible-playbook</h2>
+
+<h3 id="资产">资产</h3>
+
+<ul>
+<li>存在父子关系</li>
+<li>调用资产时,可以给资产传变量</li>
+</ul>
+
+<pre><code>192.168.14.132 ansible_ssh_pass=&quot;123456&quot;
+192.168.14.132 ansible_ssh_pass=&quot;123456&quot;
+
+[docker]
+192.168.14.13[2:3]
+
+[docker:vars]
+ansible_ssh_pass=&quot;123456&quot;
+
+[ansible:children]
+docker
+</code></pre>
+
+<h3 id="playbook基本骨架">playbook基本骨架</h3>
+
+<pre><code>host: web
+tasks:
+  - name: install nginx
+    yum: xxx
+  - name: xxx
+    shell: xxx
+
+</code></pre>
+
+<h3 id="官网playbook几个书写栗子">官网playbook几个书写栗子</h3>
+
+<pre><code>- hosts: node14
+  remote_user: root
+  tasks:
+    - name: xxx
+      yum: name=openldap
+    - name: xxx
+      yum: name=nginx
+
+- hosts: node67
+  remote_user: root
+  tasks: #clean
+    - name: Keeps scm-data.tar.gz of 7 days in local
+      shell: find /data/backup/scm-data/ -name &quot;*.tar.gz&quot;  -type f -mtime +7|xargs rm -f
+
+</code></pre>
+
+<p>带 handler</p>
+
+<pre><code>---
+- hosts: webservers
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: root
+  tasks:
+  - name: ensure apache is at the latest version
+    yum: name=httpd state=latest
+  - name: write the apache config file
+    template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+    notify:
+    - restart apache
+  - name: ensure apache is running (and enable it at boot)
+    service: name=httpd state=started enabled=yes
+  handlers:
+    - name: restart apache
+      service: name=httpd state=restarted
+
+</code></pre>
+
+<pre><code>---
+- hosts: webservers
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: root
+  tasks:
+  - name: ensure apache is at the latest version
+    yum:
+      name: httpd
+      state: latest
+  - name: write the apache config file
+    template:
+      src: /srv/httpd.j2
+      dest: /etc/httpd.conf
+    notify:
+    - restart apache
+  - name: ensure apache is running
+    service:
+      name: httpd
+      state: started
+  handlers:
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
+
+</code></pre>
+
+<pre><code>---
+- hosts: webservers
+  remote_user: root
+tasks:
+  - name: ensure apache is at the latest version
+    yum: name=httpd state=latest
+  - name: write the apache config file
+    template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+- hosts: databases
+  remote_user: root
+tasks:
+  - name: ensure postgresql is at the latest version
+    yum: name=postgresql state=latest
+  - name: ensure that postgresql is started
+    service: name=postgresql state=started
+</code></pre>
+
+<h3 id="adhoc转换为playbook">adhoc转换为playbook</h3>
+
+<pre><code>host: web
+tasks:
+  - name: &quot;nginx install&quot;
+    yum: name=nginx state=present
+  - name: enable nginx&amp;start nginx
+    service: name=nginx state=restarted enabled=yes
+</code></pre>
+
+<pre><code>ansible 192.168.14.132 -m service -a &quot;name=nginx state=restarted enabled=yes&quot;
+</code></pre>
+
+<h2 id="playbook实用选项">playbook实用选项</h2>
+
+<p>列出主机和task</p>
+
+<pre><code>ansible-playbook web.yaml --list-hosts
+ansible-playbook web.yaml --list-tasks
+</code></pre>
+
+<p>缩小执行范围</p>
+
+<pre><code>ansible-playbook web.yaml --limit=192.168.14.132
+ansible-playbook web.yaml -l 192.168.14.132
+</code></pre>
+
+<p>以这个用户身份运行</p>
+
+<pre><code>ansible-playbook web.yaml --become-user=maotai
+</code></pre>
+
+<pre><code>-u REMOTE_USER, --user=REMOTE_USER
+    connect as this user (default=None)
+--become-user=BECOME_USER
+    run operations as this user (default=root)
+</code></pre>
+
+<h2 id="playbook试验">playbook试验</h2>
+
+<h3 id="step1错误-则step2不会被执行">step1错误 则step2不会被执行</h3>
+
+<pre><code>- hosts: web
+  tasks:
+    - name: step1
+      shell: cat /tmp/1.txt
+    - name: step2
+      shell: cat /etc/hosts
+
+</code></pre>
+
+<h3 id="返回内容看不到具体值-只看到结果-但是adhoc可以看到执行输出内容">返回内容看不到具体值 只看到结果 但是adhoc可以看到执行输出内容</h3>
+
+<pre><code>- hosts: web
+  tasks:
+    - name: step1
+      shell: ls /tmp
+    - name: step2
+      shell: cat /etc/hosts
+
+</code></pre>
+
+<h3 id="定义变量">定义变量</h3>
+
+<pre><code>- hosts: test
+  strategy: debug
+  gather_facts: no
+  vars:
+    var1: value1
+  tasks:
+    - name: wrong variable
+      ping: data={{ wrong_var }}
+</code></pre>
+
+<h2 id="debug模块">debug模块</h2>
+
+<p>平时我们在使用ansible编写playbook时，经常会遇到错误，很多时候有不知道问题在哪里 。这个时候可以使用-vvv参数打印出来详细信息，不过很多时候-vvv参数里很多东西并不是我们想要的，这时候就可以使用官方提供的debug模块来查找问题出现在哪里。</p>
+
+<pre><code>- hosts: 192.168.14.132
+  tasks:
+    - name: debug test one host
+      debug:
+        msg: &quot;System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}&quot;
+</code></pre>
+
+<p>msg: 默认是&rdquo;hello world&rdquo;,赋值形式
++ msg:
++ msg=</p>
+
+<h2 id="template模块">template模块</h2>
+
+<p>把/mytemplates/foo.j2文件经过填写参数后，复制到远程节点的/etc/file.conf，文件权限相关略过</p>
+
+<pre><code>- template: src=/mytemplates/foo.j2 dest=/etc/file.conf owner=bin group=wheel mode=0644
+</code></pre>
+
+<p>跟上面一样的效果，不一样的文件权限设置方式</p>
+
+<pre><code>- template: src=/mytemplates/foo.j2 dest=/etc/file.conf owner=bin group=wheel mode=&quot;u=rw,g=r,o=r&quot;
+</code></pre>
+
+<h2 id="rgistry变量-输出字典">rgistry变量&ndash;输出字典</h2>
+
+<pre><code>- hosts: 192.168.14.132
+  tasks:
+    - name: registry vars
+      shell: hostname
+      register: info
+    - name: display var
+      debug: msg=&quot;The regis var is {{ info }}&quot;
+</code></pre>
+
+<p>rgistry变量&ndash;过滤结果</p>
+
+<pre><code>- hosts: 192.168.14.132
+  tasks:
+    - name: registry vars
+      shell: hostname
+      register: info
+    - name: display var
+      debug: msg=&quot;The regis var is {{ info['stdout'] }}&quot;
+</code></pre>
+
+<h2 id="1-变量-通过hosts">1,变量-通过hosts</h2>
+
+<p>给某台定义变量</p>
+
+<pre><code>192.168.14.132 key=132
+192.168.14.133 key=133 #优先级比组高
+</code></pre>
+
+<p>为一个组所机器定义变量</p>
+
+<pre><code>[nginx]
+192.168.14.13[2:3]
+[nginx:vars]
+key=nginx
+</code></pre>
+
+<pre><code>- hosts: web
+  tasks:
+    - name: var via hosts
+      debug: msg=&quot;the {{ inventory_hostname }} value is {{ key }}&quot;
+</code></pre>
+
+<p>同时给某一主机和组指定变量,key的结果 132 133</p>
+
+<pre><code>#cat /etc/ansible/hosts
+192.168.14.132 key=132
+192.168.14.133 key=133
+[web]
+192.168.14.132
+192.168.14.133
+
+[web:vars]
+key=webserver
+#cat y1.yaml
+- hosts: web
+  tasks:
+    - name: var via var-files
+      debug: msg=&quot;the {{ inventory_hostname }} value is {{ key }}&quot;
+</code></pre>
+
+<p>给组指定变量,key的结果webserver</p>
+
+<pre><code>#192.168.14.132 key=132
+#192.168.14.133 key=133
+[web]
+192.168.14.132
+192.168.14.133
+
+[web:vars]
+key=webserver
+#cat y1.yaml
+- hosts: web
+  tasks:
+    - name: var via var-files
+      debug: msg=&quot;the {{ inventory_hostname }} value is {{ key }}&quot;
+</code></pre>
+
+<h2 id="2-变量-通过文件vars-file">2,变量&ndash;通过文件vars_file</h2>
+
+<pre><code>#cat var.yaml
+key: hello world  # 变量名为key
+</code></pre>
+
+<pre><code>#cat y1.yaml
+- hosts: web
+  vars_files:
+    - var.yaml
+  tasks:
+    - name: var via var-files
+      debug: msg=&quot;the {{ inventory_hostname }} value is {{ key }}&quot;
+</code></pre>
+
+<h2 id="3-变量定义-通过命令行传入">3,变量定义&ndash;通过命令行传入</h2>
+
+<pre><code>[root@node1 an]# cat y3.yaml
+- hosts: web
+  tasks:
+    - name: var via var-files
+      debug: msg=&quot;the {{ inventory_hostname }} value is {{ key }}&quot;
+</code></pre>
+
+<pre><code>ansible-playbook y3.yaml -e &quot;key=KEY&quot;
+ansible-playbook y3.yaml -e &quot;@var.yaml&quot; #通过指定的文件传入
+</code></pre>
+
+<h2 id="4-变量定义-playbook中使用vars">4,变量定义&ndash;playbook中使用vars</h2>
+
+<pre><code>- hosts: web
+  vars:
+    key: Ansible
+  tasks:
+    - name: var via vars
+      debug: msg=&quot;the {{ inventory_hostname }} value is {{ key }}&quot;
+</code></pre>
+
+<h2 id="5-变量定义-通过vars-prompt">5,变量定义&ndash;通过vars_prompt</h2>
+
+<pre><code>- hosts: web
+  vars_prompt:
+    - name: &quot;one&quot;
+      prompt: &quot;pls input one value&quot;
+      private: no
+    - name: &quot;two&quot;
+      prompt: &quot;pls input two value&quot;
+      default: good
+      private: yes
+  tasks:
+    - name: display one value
+      debug: msg=&quot;one value is {{ one }}&quot;
+    - name: display two value
+      debug: msg=&quot;one value is {{ two }}&quot;
+</code></pre>
+
+<p>执行过程</p>
+
+<pre><code>[root@node1 an]# ansible-playbook y4.yaml
+pls input one value: one
+pls input two value [good]:   #这就是private的好处,输入的时候不显示
+
+PLAY [web]
+</code></pre>
+
+<p>注: 如果输入为空,则 key=&ldquo;&rdquo;,可以执行成功</p>
+
+<h2 id="playbook循环">playbook循环</h2>
+
+<h2 id="简单循环item">简单循环item</h2>
+
+<p>key是item</p>
+
+<pre><code>[root@node1 an]# cat y5.yaml
+- hosts: web
+  tasks:
+    - name: debug
+      debug: msg=&quot;name-----&gt;{{ item }}&quot;
+      with_items:
+        - one
+        - tow
+        - three
+</code></pre>
+
+<h2 id="item是字典类型">item是字典类型</h2>
+
+<p>item数据理性是python类型.</p>
+
+<pre><code>[root@node1 an]# cat y6.yaml
+- hosts: web
+  gather_facts: False
+  tasks:
+    - name: debug loops
+      debug: msg=&quot;key-----&gt;{{ item.key }} value-----&gt;{{ item.value }}&quot;
+      with_items:
+        - {key: &quot;one&quot;,value: &quot;VALUE1&quot;}
+        - {key: &quot;two&quot;,value: &quot;VALUE2&quot;}
+
+</code></pre>
+
+<h2 id="随机选一个">随机选一个</h2>
+
+<h2 id="从上到下-first优先">从上到下,first优先</h2>
+
+<h2 id="template调用自定义变量">template调用自定义变量</h2>
+
+<p><a href="http://diannaowa.blog.51cto.com/3219919/1682061">ansible分支when</a>
+<a href="http://diannaowa.blog.51cto.com/3219919/1681885">ansible循环</a></p>
+
+<pre><code># cat httpd.j2
+{{ key }}
+
+# cat y3.yaml
+- hosts: 192.168.14.132
+  vars:
+    key: ansible
+  tasks:
+    - name: template调用var
+      template: src=./httpd.j2 dest=/root/an/httpd2.conf
+验证
+# cat httpd2.conf
+ansible
+</code></pre>
+
+<h1 id="03ansible模块">03ansible模块</h1>
+
+<h2 id="role">role</h2>
+
+<p>按照anisble标准创建目录,目录间联系不需要管.如下面,include即可以执行了</p>
+
+<pre><code>ansible-galaxy init somedir
+</code></pre>
+
+<pre><code>$ tree
+.
+├── roles
+│   └── common
+│       ├── handlers
+│       ├── meta
+│       └── tasks
+│           └── main.yml
+└── test.yml
+
+5 directories, 2 files
+$ cat roles/common/tasks/main.yml
+- name:
+  debug: msg=&quot;helllllllo&quot;
+</code></pre>
+
+<pre><code>$ cat test.yml
+- hosts: 192.168.14.132
+  roles:
+    - common
+</code></pre>
+
+<h2 id="cron模块">cron模块</h2>
+
+<pre><code>ansible all -m cron -a 'name=&quot;jutest&quot; hour=&quot;5&quot; job=&quot;/bin/bash /tmp/test.sh&quot;'
+效果如下：
+* 5 * * *  /bin/bash /tmp/test.sh
+</code></pre>
+
+<h2 id="template模块-1">template模块</h2>
+
+<p>把/mytemplates/foo.j2文件经过填写参数后，复制到远程节点的/etc/file.conf，文件权限相关略过</p>
+
+<pre><code>- template: src=/mytemplates/foo.j2 dest=/etc/file.conf owner=bin group=wheel mode=0644
+</code></pre>
+
+<p>跟上面一样的效果，不一样的文件权限设置方式</p>
+
+<pre><code>- template: src=/mytemplates/foo.j2 dest=/etc/file.conf owner=bin group=wheel mode=&quot;u=rw,g=r,o=r&quot;
+</code></pre>
+
+<h2 id="setup模块">setup模块</h2>
+
+<p>通过命令获取所有的系统信息
+搜集主机的所有系统信息</p>
+
+<pre><code>ansible all -m setup
+</code></pre>
+
+<p>搜集系统信息并以主机名为文件名分别保存在/tmp/facts 目录</p>
+
+<pre><code>ansible all -m setup --tree /tmp/facts
+</code></pre>
+
+<p>#搜集和内存相关的信息</p>
+
+<pre><code>nsible all -m setup -a 'filter=ansible_*_mb'
+</code></pre>
+
+<p>搜集网卡信息</p>
+
+<pre><code>ansible all -m setup -a 'filter=ansible_eth[0-2]'
+
+</code></pre>
+
+<h2 id="archive模块">archive模块</h2>
+
+<p>支持的格式:<code>gz,bz2,zip,tar</code>
+0,压缩单个目录得到最根的目录</p>
+
+<pre><code>- hosts: 192.168.x.x
+  tasks:
+    - name: 测试压缩模块
+      archive:
+        path: /opt/test
+        dest: /root/an/test.tar
+        format: tar
+解压后得到: test
+</code></pre>
+
+<p>1.压缩多个目录</p>
+
+<pre><code>- hosts: 192.168.x.x
+  tasks:
+    - name: 测试压缩模块
+      archive:
+        path:
+            - /opt/test
+            - /tmp/test2/test3/1.txt
+        dest: /root/an/test.tar
+        format: tar
+解压后得到: /opt/test
+            /tmp/test2/test3/
+</code></pre>
+
+<p>注:空文件或目录压缩不计入压缩范围.</p>
+
+<h2 id="发邮件">发邮件</h2>
+
+<pre><code>- hosts: node67
+  remote_user: root
+  tasks:
+    - name: cat hosts
+      shell: cat /etc/hosts
+      register: info
+
+    - name: sendMail to op
+      mail:
+        host: smtp.sina.com
+        port: 25
+        username: lanny@sina.com
+        password: 123456
+        from: lanny@sina.com (lanny)
+        to: maotai &lt;maotai@qq.com&gt;
+        # cc: John Doe &lt;j.d@example.org&gt;, Suzie Something &lt;sue@example.com&gt;
+        # cc: Mao Tai2 &lt;maotai2@qq.com&gt;, Mao Tai3 &lt;maotai3@qq.com&gt;
+        # attach: /etc/fstab /etc/hosts
+        subject: Backup-scm successfully
+        body: 'System {{ ansible_hostname }}-192.168.x.x {{ info['stdout_lines'] }}'
+
+</code></pre>
+
+<h2 id="synchronize模块">synchronize模块</h2>
+
+<h3 id="rsync同步">rsync同步</h3>
+
+<pre><code>#ansible test -m synchronize -a &quot;src=/data/adminshell/ dest=/data/adminshell/ &quot;
+</code></pre>
+
+<h3 id="rsync无差异同步">rsync无差异同步</h3>
+
+<pre><code>#ansible test -m synchronize -a &quot;src=/data/adminshell/ dest=/data/adminshell/ delete=yes&quot;
+&quot;msg&quot;: &quot;*deleting   test.txt\n&quot;
+</code></pre>
+
+<h3 id="排除同步">排除同步</h3>
+
+<pre><code>#同步目录，排除某个文件
+ansible test -m synchronize -a &quot;src=/data/adminshell/ dest=/data/adminshell/ rsync_opts=&quot;--exclude=exclude.txt&quot; &quot;
+#同步目录，排除多个文件
+ansible test -m synchronize -a &quot;src=/data/adminshell/ dest=/data/adminshell/ rsync_opts=&quot;--exclude=\*.conf,--exclude=\*.html,--exclude=test1&quot; &quot;
+</code></pre>
+
+<blockquote>
+<p>相对copy模块
+* 1.copy没mode,只能发出去
+* 2.copy是全量的</p>
+</blockquote>
+
+<h2 id="replace模块">replace模块</h2>
+
+<pre><code>ansible 192.168.14.133 -m replace -a &quot;dest=/etc/hosts regexp='^Old' replace='New' backup=yes&quot;
+</code></pre>
+
+<pre><code>#备份效果
+[root@node2 tmp]# ll /etc/hosts*
+-rw-r--r--  1 root root 350 Jul 20 16:56 /etc/hosts
+-rw-r--r--  1 root root 312 Jul 20 16:43 /etc/hosts.63296.2017-07-20@16:44:03~
+-rw-r--r--  1 root root 350 Jul 20 16:55 /etc/hosts.63677.2017-07-20@16:56:53~
+
+</code></pre>
+
+<p>注: copy fetch模块也有backup的功能.</p>
+
+<h2 id="copy模块">copy模块</h2>
+
+<pre><code>#拷贝本地的/etc/hosts 文件到myserver主机组所有主机的/tmp/hosts（空目录除外）,如果使用playbooks 则可以充分利用template 模块
+ansible myserver -m copy -a &quot;src=/etc/hosts dest=/tmp/hosts mode=600 owner=ju group=ju&quot;
+#file 模块允许更改文件的用户及权限
+ansible webservers -m file -a &quot;dest=/srv/foo/a.txt mode=600&quot;
+ansible webservers -m file -a &quot;dest=/srv/foo/b.txt mode=600 owner=ju group=ju&quot;
+#使用file 模块创建目录，类似mkdir -p
+ansible webservers -m file -a &quot;dest=/path/to/c mode=755 owner=ju group=ju state=directory&quot;
+#使用file 模块删除文件或者目录
+ansible webservers -m file -a &quot;dest=/path/to/c state=absent&quot;
+</code></pre>
+
+<h2 id="raw模块">raw模块</h2>
+
+<pre><code>- hosts: node14-scm
+  remote_user: root
+  vars:
+  - sfpath: &quot;/backup/scm-data/*_$(date +%F -d '-1 day')_scmdata.tar.gz&quot;
+  - dfpath: &quot;/data/backup/scm-data/&quot;
+  tasks:
+    #清理远端的压缩包,远端进保留一天scm-data.tar.gz  2,远端打包并将压缩包取回
+    - name: Clean | keeping [scm-server-node14]'s /backup/scm-data dir only have one tar pkg
+      shell: find /backup/scm-data/ -name &quot;*.tar.gz&quot;  -type f -mtime -7 |xargs rm -f
+
+    - name: Package | make /root/.scm to tar.gz package on node14
+      raw:
+           cd /backup/scm-data &amp;&amp; \
+           \rm -rf .scm &amp;&amp; \
+           cp -r /root/.scm /backup/scm-data/ &amp;&amp; \
+           tar zcf /backup/scm-data/`ifconfig|sed -n '2p'|awk -F':' '{print $2}'|awk '{print $1}'`_$(date +%F -d '-1 day')_scmdata.tar.gz .scm
+
+</code></pre>
+
+<pre><code>- hosts: node1
+  task:
+    - name: 清理/tmp
+      raw:
+           cd /tmp &amp;&amp; \
+           \rm -rf *
+
+</code></pre>
+
+<h2 id="tags">tags</h2>
+
+<p>如果你有一个很大的playbook，而你只想run其中的某个task，这个时候tags是你的最佳选择。
+此时若你希望只run其中的某个task，这run 的时候指定tags即可</p>
+
+<pre><code>tasks:
+
+    - yum: name={{ item }} state=installed
+      with_items:
+         - httpd
+         - memcached
+      tags:
+         - packages
+
+    - template: src=templates/src.j2 dest=/etc/foo.conf
+      tags:
+         - configuration
+</code></pre>
+
+<pre><code>ansible-playbook example.yml --tags &quot;configuration,packages&quot;   #run 多个tags
+ansible-playbook example.yml --tags packages                   # 只run 一个tag
+</code></pre>
+
+<p>相反，也可以跳过某个task</p>
+
+<pre><code>ansible-playbook example.yml --skip-tags configuration
+</code></pre>
+
+<p>tags 和role 结合使用
+tags 这个属性也可以被应用到role上，例如:</p>
+
+<pre><code>roles:
+  - { role: webserver, port: 5000, tags: [ 'web', 'foo' ] }
+</code></pre>
+
+<p>tags和include结合使用</p>
+
+<pre><code>- include: foo.yml tags=web,foo
+</code></pre>
+
+<p>这样，fool.yml 中定义所有task都将被执行</p>
+
+<h2 id="blockinfile模块">blockinfile模块</h2>
+
+<pre><code>- hosts: 192.168.14.133
+  tasks:
+  - name: Edit profile JDK conf
+    blockinfile:
+      dest: /etc/profile
+      backup: yes
+      marker: &quot;# {mark} jdk config&quot;
+      content: |
+        JAVA_HOME=/usr/java/jdk1.8.0_66
+        CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar
+        PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+        export JAVA_HOME CLASSPATH PATH
+</code></pre>
+
+<pre><code>#cat profile
+...
+# BEGIN jdk config
+JAVA_HOME=/usr/java/jdk1.8.0_66
+CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar
+PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+export JAVA_HOME CLASSPATH PATH
+# END jdk config
+</code></pre>
+
+<h2 id="lineinfile模块">lineinfile模块</h2>
+
+<p>ansible实现sed功能</p>
+
+<h3 id="替换目标文件中的某行">替换目标文件中的某行</h3>
+
+<pre><code>- hosts: 192.168.14.132
+  tasks:
+    - name: seline modify enforcing
+      lineinfile:
+        dest: /etc/selinux/config
+        regexp: '^SELINUX='
+        line: 'SELINUX=enforcing'
+</code></pre>
+
+<h3 id="删除一行">删除一行</h3>
+
+<pre><code>- hosts: 192.168.14.132
+  tasks:
+    - name: 删除一行
+      lineinfile:
+        path: /root/an/httpd2.conf
+        state: absent
+        regexp: '^an'
+</code></pre>
+
+<h3 id="在目标文件某行前添加一行">在目标文件某行前添加一行</h3>
+
+<pre><code>- name: httpd.conf modify 8080
+  lineinfile:
+     dest: /opt/playbook/test/http.conf
+     regexp: '^Listen'
+     insertbefore: '^#Port'
+     line: 'Listen 8080'
+  tags:
+   - http8080
+验证:
+[root@master test]# cat http.conf
+#Listen 12.34.56.78:80
+#Listen 80
+Listen 8080
+#Port
+</code></pre>
+
+<h3 id="在目标文件某行后添加一行">在目标文件某行后添加一行</h3>
+
+<pre><code>- name: httpd.conf modify 8080
+      lineinfile:
+        dest: /opt/playbook/test/http.conf
+        regexp: '^Listen'
+        insertafter: '^#Port'
+        line: 'Listen 8080'
+      tags:
+        - http8080
+验证:
+[root@master test]# cat http.conf
+#Listen 12.34.56.78:80
+#Listen 80
+#Port
+Listen 8080
+</code></pre>
+
+<h2 id="lookup-templates">lookup templates</h2>
+
+<pre><code>#lookups.j2
+worker_process {{ ansible_processor_cores }}
+IPaddress {{ ansible_eth0.ipv4.address }}
+</code></pre>
+
+<pre><code>- hosts: 192.168.14.132
+  vars:
+    # contents相当于f.read,将文件读取成了1个大的字符串
+    contents: &quot;{{ lookup('template','./lookups.j2') }}&quot;
+  tasks:
+  - name: debug lookups
+    # 使用jinja2对文件进行遍历.
+    debug: msg=&quot;The contents is {% for i in contents.split(&quot;\n&quot;) %} {{ i }} {% endfor %}&quot;
+
+# 结果 由此可见是模板渲染后的结果做了行遍历
+#&quot;msg&quot;: &quot;The contents is  worker_process 1  IPaddress 192.168.14.132     &quot;
+</code></pre>
+
+<h2 id="authorized-key建互信">authorized_key建互信</h2>
+
+<pre><code>ansible web -m authorized_key -a &quot;user=root state=present key=\&quot;{{ lookup('file', '/root/.ssh/id_rsa.pub') }}\&quot;&quot; -k
+
+ansible all -m authorized_key -a &quot;user=root state=present key=\&quot;{{ lookup('file', '/root/.ssh/id_rsa.pub') }}\&quot;&quot; -k    # 将本地root的公钥导入到远程用户root的authorized_keys里
+ansible all -m authorized_key -a &quot;user=root state=present key=\&quot;{{ lookup('file', '/home/test/.ssh/id_rsa.pub') }}\&quot;&quot; -k # 将本地test的公钥导入到远程用户root的authorized_keys里
+</code></pre>
+
+<pre><code>vi /etc/ansible/ansible.cfg
+host_key_checking = False
+</code></pre>
+
+<h2 id="script模块">script模块</h2>
+
+<p>相对shell,好处是script可以集中管理脚本,过程是:将shell下发到目标机执行.
+而shell必须将shell下发下去执行</p>
+
+<pre><code>$　cat s.sh
+#!/bin/sh
+
+/bin/tar -xf /tmp/opt.tar.gz -C /tmp
+</code></pre>
+
+<p>执行过程</p>
+
+<pre><code>$ansible 192.168.14.133 -m script -a '/tmp/s.sh' -o
+192.168.14.133 | SUCCESS =&gt; {&quot;changed&quot;: true, &quot;rc&quot;: 0, &quot;stderr&quot;: &quot;Shared connection to 192.168.14.133 closed.\r\n&quot;, &quot;stdout&quot;: &quot;&quot;, &quot;stdout_lines&quot;: []}
+</code></pre>
+
+<p>结果</p>
+
+<pre><code>$ ll
+total 128
+drwxr-xr-x 6 root root    157 Jul 20 17:07 opt
+-rw-r--r-- 1 root root 128187 Jul 21 16:29 opt.tar.gz
+
+</code></pre>
+
+<h2 id="unarchive-解压缩">unarchive 解压缩</h2>
+
+<p>可以将本地的压缩包直接解压到远程
+可以将远程压缩包直接解压</p>
+
+<pre><code>  src
+  copy  yes|no  # yes:默认，压缩包在本地,src=本地压缩包路径，dest=解压到远程路径；no远程主机已存在压缩包，src=远程压缩包路径，dest=解压到远程路径
+  creates  # 创建文件目录，当文件存在就不执行
+  dest
+  group
+  mode
+  owner
+  unarchive: src=foo.tgz dest=/var/lib/foo
+  unarchive: src=/tmp/foo.zip dest=/usr/local/bin copy=no
+  unarchive: src=/tmp/test.tar.gz dest=/opt/tmp/ creates=/opt/tmp/ copy=no
+</code></pre>
+
+<h1 id="04ansible-when">04ansible when</h1>
+
+<h2 id="ansible条件-简单的条件">ansible条件-简单的条件</h2>
+
+<pre><code>tasks:
+  - name: &quot;shut down Debian flavored systems&quot;
+    command: /sbin/shutdown -t now
+    when: ansible_os_family == &quot;Debian&quot;
+    # note that Ansible facts and vars like ansible_os_family can be used
+    # directly in conditionals without double curly braces
+</code></pre>
+
+<h2 id="ansible条件-or">ansible条件-or</h2>
+
+<pre><code>tasks:
+  - name: &quot;shut down CentOS 6 and Debian 7 systems&quot;
+    command: /sbin/shutdown -t now
+    when: (ansible_distribution == &quot;CentOS&quot; and ansible_distribution_major_version == &quot;6&quot;) or
+          (ansible_distribution == &quot;Debian&quot; and ansible_distribution_major_version == &quot;7&quot;)
+</code></pre>
+
+<h2 id="ansible条件-and">ansible条件-and</h2>
+
+<pre><code>tasks:
+  - name: &quot;shut down CentOS 6 systems&quot;
+    command: /sbin/shutdown -t now
+    when:
+      - ansible_distribution == &quot;CentOS&quot;
+      - ansible_distribution_major_version == &quot;6&quot;
+</code></pre>
+
+<h2 id="ansible条件-jinja2">ansible条件-jinja2</h2>
+
+<pre><code>tasks:
+  - command: /bin/false
+    register: result
+    ignore_errors: True
+
+  - command: /bin/something
+    when: result|failed
+
+  # In older versions of ansible use |success, now both are valid but succeeded uses the correct tense.
+  - command: /bin/something_else
+    when: result|succeeded
+
+  - command: /bin/still/something_else
+    when: result|skipped
+</code></pre>
+
+<h1 id="ansible-playbook高级">ansible-playbook高级</h1>
+
+<h2 id="参考-https-www-ibm-com-developerworks-cn-linux-1608-lih-ansible-index-html"><a href="https://www.ibm.com/developerworks/cn/linux/1608_lih_ansible/index.html">参考</a></h2>
+
+<h2 id="任务委派">任务委派</h2>
+
+<p>1.在14.132执行, 14.133上没任何变动</p>
+
+<pre><code>- hosts: 192.168.14.133
+  tasks:
+    - shell: &quot;echo '1.1.1.1 www.abc.com' &gt;&gt; /etc/hosts&quot;
+      delegate_to: 192.168.14.132
+</code></pre>
+
+<p>2.先在14.133上输出字符串,然后再触发让14.132去干活(即修改hosts)</p>
+
+<pre><code>$ cat t.yml
+- hosts: 192.168.14.133
+  tasks:
+    - debug: msg=&quot;hello node2&quot;
+    - shell: &quot;echo '1.1.1.1 www.abc.com' &gt;&gt; /etc/hosts&quot;
+      delegate_to: 192.168.14.132
+</code></pre>
+
+<p>验证:</p>
+
+<pre><code>[root@node1 ~]# cat /etc/hosts
+...
+1.1.1.1 www.abc.com
+
+</code></pre>
+
+<p>任务委派功能还可以用于以下场景：
+&gt; + 在部署之前将一个主机从一个负载均衡集群中删除。
+&gt; + 当你要对一个主机做改变之前去掉相应 dns 的记录
+&gt; + 当在一个存储设备上创建 iscsi 卷的时候
+&gt; + 当使用外的主机来检测网络出口是否正常的时候</p>
+
+<h2 id="本地操作功能-local-action">本地操作功能 &ndash;local_action</h2>
+
+<p>Ansible 默认只会对控制机器执行操作，但如果在这个过程中需要在 Ansible 本机执行操作呢？细心的读者可能已经想到了，可以使用 delegate_to( 任务委派 ) 功能呀。没错，是可以使用任务委派功能实现。不过除了任务委派之外，还可以使用另外一外功能实现，这就是 local_action 关键字。</p>
+
+<pre><code>- name: add host record to center server
+  local_action: shell 'echo &quot;192.168.1.100 test.xyz.com &quot; &gt;&gt; /etc/hosts'
+</code></pre>
+
+<p>当然您也可以使用 connection:local 方法，如下:</p>
+
+<pre><code>- name: add host record to center server
+  shell: 'echo &quot;192.168.1.100 test.xyz.com &quot; &gt;&gt; /etc/hosts'
+  connection: local
+</code></pre>
+
+<h2 id="委托者的facts">委托者的facts</h2>
+
+<p>默认情况下, 委托任务的facts是inventory_hostname中主机的facts, 而不是被委托机器的facts. 在ansible 2.0 中, 设置delegate_facts为true可以让任务去收集被委托机器的facts.</p>
+
+<pre><code>- hosts: app_servers
+  tasks:
+    - name: gather facts from db servers
+      setup:
+      delegate_to: &quot;{{item}}&quot;
+      delegate_facts: True
+      with_items: &quot;{{groups['dbservers'}}&quot;
+</code></pre>
+
+<p>该例子会收集dbservers的facts并分配给这些机器, 而不会去收集app_servers的facts</p>
+
+<h2 id="run-once">RUN ONCE</h2>
+
+<pre><code>通过run_once: true来指定该task只能在某一台机器上执行一次. 可以和delegate_to 结合使用
+
+- command: /opt/application/upgrade_db.py
+  run_once: true
+  delegate_to: web01.example.org
+</code></pre>
+
+<p>指定在&rdquo;web01.example.org&rdquo;上执行这
+如果没有delegate_to, 那么这个task会在第一台机器上执行</p>
+
+<h2 id="异步和轮询-http-www-cnblogs-com-v394435982-p-5180933-html"><a href="http://www.cnblogs.com/v394435982/p/5180933.html">异步和轮询</a></h2>
+
+<p>Ansible 有时候要执行等待时间很长的操作,  这个操作可能要持续很长时间, 设置超过ssh的timeout. 这时候你可以在step中指定async 和 poll 来实现异步操作</p>
+
+<p>async 表示这个step的最长等待时长,  如果设置为0, 表示一直等待下去直到动作完成.</p>
+
+<p>poll 表示检查step操作结果的间隔时长.</p>
+
+<p>例1:</p>
+
+<pre><code>---
+- name: Test
+  hosts: localhost
+  tasks:
+    - name: wair for
+      shell: sleep 16
+      async: 10
+      poll: 2
+</code></pre>
+
+<p>结果:</p>
+
+<pre><code>TASK: [wair for] **************************************************************
+ok: [localhost]
+&lt;job 207388424975.101038&gt; polling, 8s remaining
+ok: [localhost]
+&lt;job 207388424975.101038&gt; polling, 6s remaining
+ok: [localhost]
+&lt;job 207388424975.101038&gt; polling, 4s remaining
+ok: [localhost]
+&lt;job 207388424975.101038&gt; polling, 2s remaining
+ok: [localhost]
+&lt;job 207388424975.101038&gt; polling, 0s remaining
+&lt;job 207388424975.101038&gt; FAILED on localhost
+
+这个step失败, 因为操作时间超过了最大等待时长
+</code></pre>
+
+<p>例2:</p>
+
+<pre><code>---
+- name: Test
+  hosts: localhost
+  tasks:
+    - name: wair for
+      shell: sleep 16
+      async: 10
+      poll: 0
+</code></pre>
+
+<p>结果:</p>
+
+<pre><code>TASK: [wair for] **************************************************************
+&lt;job 621720484791.102116&gt; finished on localhost
+
+PLAY RECAP ********************************************************************
+
+poll 设置为0, 表示不用等待执行结果, 该step执行成功
+</code></pre>
+
+<p>例3:</p>
+
+<pre><code>---
+- name: Test
+  hosts: localhost
+  tasks:
+    - name: wair for
+      shell: sleep 16
+      async: 0
+      poll: 10
+</code></pre>
+
+<p>结果:</p>
+
+<pre><code># time ansible-playbook xiama.yml
+TASK: [wair for] **************************************************************
+changed: [localhost]
+
+PLAY RECAP ********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0
+
+
+real    0m16.693s
+
+async设置为0, 会一直等待直到该操作完成.
+</code></pre>
+
+<p>Play执行时的并发限制
+一般情况下, ansible会同时在所有服务器上执行用户定义的操作, 但是用户可以通过serial参数来定义同时可以在多少太机器上执行操作.</p>
+
+<ul>
+<li>name: test play
+hosts: webservers
+serial: 3</li>
+</ul>
+
+<p>webservers组中的3台机器完全完成play后, 其他3台机器才会开始执行,
+serial参数在ansible-1.8以后就开始支持百分比.</p>
+
+<p>最大失败百分比
+默认情况下, 只要group中还有server没有失败,  ansible就是继续执行tasks. 实际上, 用户可以通过&rdquo;max_fail_percentage&rdquo; 来定义, 只要超过max_fail_percentage台的server失败, ansible 就可以中止tasks的执行.</p>
+
+<pre><code>- hosts: webservers
+  max_fail_percentage: 30
+  serial: 10
+Note: 实际失败机器必须大于这个百分比时, tasks才会被中止. 等于时是不会中止tasks的.
+</code></pre>
+
+<h2 id="任务暂停">任务暂停</h2>
+
+<p><img src="http://ww1.sinaimg.cn/large/9e792b8fgy1fhw0nplamxj20kc0h87o4" alt="image" /></p>
+
+<h1 id="ansible-playbook-1">ansible-playbook</h1>
+
+<p><a href="http://www.361way.com/ansible-playbook-example/4441.html">参考</a></p>
+
+<p>一、一个简单的示例</p>
+
+<p>下面给出一个简单的ansible-playbook示例，了解下其构成。</p>
+
+<pre><code># cat user.yml
+- name: create user
+  hosts: all
+  user: root
+  gather_facts: false
+  vars:
+  - user: &quot;test&quot;
+  tasks:
+  - name: create  user
+    user: name=&quot;{{ user }}&quot;
+</code></pre>
+
+<p>三、playbook的构成</p>
+
+<p>playbook是由一个或多个“play”组成的列表。play的主要功能在于将事先归并为一组的主机装扮成事先通过ansible中的task定义好的角色。从根本上来讲所谓task无非是调用ansible的一个module。将多个play组织在一个playbook中即可以让它们联同起来按事先编排的机制同唱一台大戏。其主要有以下四部分构成</p>
+
+<p>playbooks组成：
+- Target section：   定义将要执行 playbook 的远程主机组
+- Variable section： 定义 playbook 运行时需要使用的变量
+- Task section：     定义将要在远程主机上执行的任务列表
+- Handler section：  定义 task 执行完成以后需要调用的任务</p>
+
+<p>而其对应的目录层为五个，如下：</p>
+
+<p>一般所需的目录层有：(视情况可变化)
+- vars     变量层
+- tasks    任务层
+- handlers 触发条件
+- files    文件
+- template 模板</p>
+
+<p>2、任务列表和action</p>
+
+<pre><code>tasks:
+  - name: make sure apache is running
+    service: name=httpd state=running
+在众多模块中只有command和shell模块仅需要给定一个列表而无需使用“key=value”格式例如
+tasks:
+  - name: disable selinux
+    command: /sbin/setenforce 0  如果命令或脚本的退出码不为零可以使用如下方式替代
+tasks:
+ - name: run this command and ignore the result
+    shell: /usr/bin/somecommand || /bin/true
+或者使用ignore_errors来忽略错误信息
+tasks:
+  - name: run this command and ignore the result
+    shell: /usr/bin/somecommand
+    ignore_errors: True
+</code></pre>
+
+<p><img src="http://ww1.sinaimg.cn/large/9e792b8fgy1fhv3uj4qofj20np0b0my8" alt="image" /></p>
+
+<p>3,给task添加触发器notify,触发handler</p>
+
+<pre><code>- name: template configuration file
+  template: src=template.j2 dest=/etc/foo.conf
+  notify:
+  - restart memcached
+  - restart apache
+handler是task列表这些task与前述的task并没有本质上的不同。
+handlers:
+  - name: restart memcached
+    service: name=memcached state=restarted
+  - name: restart apache
+    service: name=apache state=restarted
+
+</code></pre>
+
+<h1 id="ansible-galaxy">ansible-galaxy</h1>
+
+<p>[Ansible Galaxy]<a href="https://ipaas.com.cn/blog/post/seanzhau/7185546cc669)">https://ipaas.com.cn/blog/post/seanzhau/7185546cc669)</a></p>
+
+<p>ansible-galaxy是一个工具，我们可以利用它快速的创建一个标准的roles目录结构，还可以通过它在https:/galaxy.ansible.com上下载别人写好的roles，直接拿来用。</p>
+
+<p>通过ansible-galaxy初始化一个roles的目录结构，方法如下：</p>
+
+<pre><code>ansible-galaxy init /etc/ansible/roles/websrvs
+</code></pre>
+
+<p>安装别人写好的roles：</p>
+
+<pre><code>ansible-galaxy install -p /etc/ansible/roles bennojoy.mysql
+</code></pre>
+
+<p>列出已安装的roles：</p>
+
+<pre><code>ansible-galaxy list
+</code></pre>
+
+<p>查看已安装的roles信息：</p>
+
+<pre><code>ansible-galaxy info bennojoy.mysql
+</code></pre>
+
+<p>卸载roles：</p>
+
+<pre><code>ansible-galaxy remove bennojoy.mysql
+</code></pre>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://lannyMa.github.io/posts/setting-up-a-kubernetes-cluster-with-vagrant/" data-toggle="tooltip" data-placement="top" title="Setting Up a Kubernetes Cluster With Vagrant and Virtualbox">&larr; 前一篇</a>
+                </li>
+                 
+            </ul>
+            
+            <div>
+                 
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Fri Feb 9, 2018</h4>
+    </section>
+    <h5 id="wc">8900 Words|Read in about 18 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://lannyMa.github.io/tags/linux/">linux</a> &nbsp;
+        
+        <a href="https://lannyMa.github.io/tags/svc/">svc</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+            
+        </div>
+    </div>
+    </section>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:ihorse@foxmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/maotai" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/lannyMa" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="https://lannyMa.github.io/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+        &copy;2017-2018
+          
+            
+              Mao Tai
+                      
+          
+          
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://lannyMa.github.io/">毛台在线</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io">Hugo v0.36</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 移植自 <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/bootstrap.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/photoswipe-ui-default.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/photoswipe.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/auto-render.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/main.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/prism.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/katex.min.js"></script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+
+
+  </body>
+</html>
+
