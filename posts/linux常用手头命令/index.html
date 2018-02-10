@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title> linux常用手头命令 - lannyMa.github.io|毛台的博客|Cloud Native|Big Data</title>
+  <meta name="description" content="lannyMa.github.io|毛台的博客|Cloud Native|Big Data" />
+  <meta property="og:title" content="linux常用手头命令" />
+  <meta name="twitter:title" content="linux常用手头命令" />
+  <meta name="description" content="linux常用手头命令,着急用的时候查的,查到后解决了问题做的笔录">
+  <meta property="og:description" content="linux常用手头命令,着急用的时候查的,查到后解决了问题做的笔录">
+  <meta name="twitter:description" content="linux常用手头命令,着急用的时候查的,查到后解决了问题做的笔录">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='https://raw.githubusercontent.com/lannyMa/scripts/master/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://ws1.sinaimg.cn/large/9e792b8fgy1fobd1r0mnqj2069069jra.jpg" />
+  <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/9e792b8fgy1fobd1r0mnqj2069069jra.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://lannyMa.github.io/posts/linux%E5%B8%B8%E7%94%A8%E6%89%8B%E5%A4%B4%E5%91%BD%E4%BB%A4/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="毛台在线" />
+
+  <meta name="generator" content="Hugo 0.36" />
+  <link rel="canonical" href="https://lannyMa.github.io/posts/linux%E5%B8%B8%E7%94%A8%E6%89%8B%E5%A4%B4%E5%91%BD%E4%BB%A4/" />
+  <link rel="alternate" href="https://lannyMa.github.io/index.xml" type="application/rss+xml" title="毛台在线">
+  <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/jquery-1.12.4.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="https://lannyMa.github.io/css/main.css" />
+  <link rel="stylesheet" href="https://lannyMa.github.io/css/search.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  
+
+<meta name="baidu-site-verification" content="g8IYR9SNLF" />
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?11f7d254cfa4e0ca44b175c66d379ecc";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<link rel="stylesheet" href="https://lannyMa.github.io/css/prism.css" />
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://lannyMa.github.io/">毛台在线</a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Py</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://lannyMa.github.io/categories/kubernetes">Django</a>
+                
+                
+                  <a href="https://lannyMa.github.io/categories/kubernetes">Flask</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Golang" href="/">Golang</a>
+              
+              
+            </li>
+          
+        
+          
+            <li>
+              <a title="Linux" href="/">Linux</a>
+              
+              
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+              
+              
+            </li>
+          
+        
+
+        
+
+        
+        
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="毛台在线" href="https://lannyMa.github.io/">
+            <img class="avatar-img" src="https://ws1.sinaimg.cn/large/9e792b8fgy1fobd1r0mnqj2069069jra.jpg" alt="毛台在线" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Search jimmysong.io</h4>
+        </div>
+        <div class="modal-body">
+            
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..." name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+
+
+
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex('rootsongjc-hugo');
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            
+            return '<span>' + '<a href="/' + suggestion.uri+ '">' +
+            suggestion._highlightResult.title.value + '</a></span>';
+        }
+    }
+});
+</script>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://ws1.sinaimg.cn/large/9e792b8fgy1fobeuq0l1wj218g0tu1ky.jpg" ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        
+        <div class="container">
+          <div class="row">
+              <div class="col-lg-12 col-md-12 col-md-offset-0">
+                
+                <div class="post-heading">
+                
+                  
+                     <h1>linux常用手头命令</h1>
+                     
+                     
+                  
+                  
+                  
+                    
+                      <hr class="small">
+                      <span class="post-subheading">着急用的时候查的,查到后解决了问题做的笔录</span>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  发表于 February 10, 2018
+  
+  
+</span>
+
+
+                  
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
+            <div class="posts-heading">
+                <h1 align="center">linux常用手头命令</h1>
+                
+                  
+                    <h2 align="center" class="posts-subheading">着急用的时候查的,查到后解决了问题做的笔录</h2>
+                  
+                
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Sat Feb 10, 2018</h4>
+    </section>
+    <h5 id="wc">5400 Words|Read in about 11 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://lannyMa.github.io/tags/linux/">linux</a> &nbsp;
+        
+        <a href="https://lannyMa.github.io/tags/svc/">svc</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+
+<p><a href="https://github.com/lannyMa/scripts">相关代码</a></p>
+
+<h2 id="centos7修改网卡名字">centos7修改网卡名字</h2>
+
+<pre><code>net.ifnames=0 biosdevname=0
+</code></pre>
+
+<h2 id="man手册中文">man手册中文</h2>
+
+<p>参考:<a href="http://www.kernel.org/pub/linux/docs/man-pages/">http://www.kernel.org/pub/linux/docs/man-pages/</a>
+<a href="http://blog.csdn.net/gatieme/article/details/51656707">http://blog.csdn.net/gatieme/article/details/51656707</a></p>
+
+<pre><code>yum install man-pages-zh-CN -y
+echo 'LANG=&quot;zh_CN.UTF-8&quot;' &gt;&gt; ~/.bashrc
+echo 'LANGUAGE=&quot;zh_CN:zh&quot;' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+
+<h2 id="stress压测工具">stress压测工具</h2>
+
+<pre><code>[root@n1 kubernetes]# yum install stress -y
+[root@n1 kubernetes]# stress -h
+stress: FAIL: [70121] (244) unrecognized option: -h
+[root@n1 kubernetes]# stress --help
+`stress' imposes certain types of compute stress on your system
+
+Usage: stress [OPTION [ARG]] ...
+ -?, --help         show this help statement
+     --version      show version statement
+ -v, --verbose      be verbose
+ -q, --quiet        be quiet
+ -n, --dry-run      show what would have been done
+ -t, --timeout N    timeout after N seconds
+     --backoff N    wait factor of N microseconds before work starts
+ -c, --cpu N        spawn N workers spinning on sqrt()
+ -i, --io N         spawn N workers spinning on sync()
+ -m, --vm N         spawn N workers spinning on malloc()/free()
+     --vm-bytes B   malloc B bytes per vm worker (default is 256MB)
+     --vm-stride B  touch a byte every B bytes (default is 4096)
+     --vm-hang N    sleep N secs before free (default none, 0 is inf)
+     --vm-keep      redirty memory instead of freeing and reallocating
+ -d, --hdd N        spawn N workers spinning on write()/unlink()
+     --hdd-bytes B  write B bytes per hdd worker (default is 1GB)
+
+Example: stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M --timeout 10s
+
+Note: Numbers may be suffixed with s,m,h,d,y (time) or B,K,M,G (size).
+</code></pre>
+
+<h2 id="安装python-ldap">安装python-ldap</h2>
+
+<p>参考: <a href="https://stackoverflow.com/questions/4768446/i-cant-install-python-ldap">https://stackoverflow.com/questions/4768446/i-cant-install-python-ldap</a></p>
+
+<pre><code>yum install python-devel openldap-devel
+</code></pre>
+
+<h2 id="nginx配置安全检查工具">nginx配置安全检查工具</h2>
+
+<pre><code>pip install gixy
+gixy /usr/local/nginx/conf/nginx.conf
+
+可以检查到以下一些问题:
+
+- ssrf 服务端请求伪造
+- HTTP Splitting 响应拆分
+- 错误的 referrer/origin 验证
+- 错误使用 add_header 指令
+- Host 头信息伪造
+- Referer 验证中允许为空
+- 响应头中使用多行形式
+
+</code></pre>
+
+<h2 id="禁用ipv6">禁用ipv6</h2>
+
+<p>参考: <a href="https://linux.cn/article-4935-1.html">https://linux.cn/article-4935-1.html</a></p>
+
+<pre><code>
+vi /etc/sysctl.conf
+
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+sysctl -p
+
+sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sysctl -w net.ipv6.conf.default.disable_ipv6=1
+</code></pre>
+
+<h2 id="curl命令-网站如果3次不是200或301则报警">curl命令-网站如果3次不是200或301则报警</h2>
+
+<pre><code>curl -o /dev/null -s -w &quot;%{http_code}&quot; baidu.com
+-k/--insecure   允许不使用证书到SSL站点
+-H/--header     自定义头信息传递给服务器
+-I/--head       只显示请求头信息
+-w/--write-out [format] 什么输出完成后
+-s/--silent     静默模式。不输出任何东西
+-o/--output     把输出写到该文件中
+</code></pre>
+
+<h2 id="linux正则">linux正则</h2>
+
+<p>参考: <a href="http://blog.csdn.net/Hello_Hwc/article/details/40017833">http://blog.csdn.net/Hello_Hwc/article/details/40017833</a>
+- 基本</p>
+
+<pre><code>. 匹配任何单个字符
+* 前面出现0个或者多个
+^ 以..开始
+$ 以..结束
+</code></pre>
+
+<ul>
+<li>举个例子</li>
+</ul>
+
+<pre><code>china  :  匹配此行中任意位置有china字符的行
+
+^china : 匹配此以china开关的行
+
+china$ : 匹配以china结尾的行
+
+^china$ : 匹配仅有china五个字符的行
+
+[Cc]hina : 匹配含有China或china的行
+
+Ch.na : 匹配包含Ch两字母并且其后紧跟一个任意字符之后又有na两个字符的行
+
+Ch.*na : 匹配一行中含Ch字符，并且其后跟0个或者多个字符，再继续跟na两字符
+</code></pre>
+
+<ul>
+<li>扩展正则
+```
+? : 匹配前面正则表达式的零个或一个扩展</li>
+<li>: 匹配前面正则表达式的一个或多个扩展
+{n,m}: 前面出现1个或2个或3个
+| : 匹配|符号前或后的正则表达式
+( ) : 匹配方括号括起来的正则表达式群
+```</li>
+</ul>
+
+<h2 id="grep">grep</h2>
+
+<ul>
+<li>参数</li>
+</ul>
+
+<pre><code>-n, --line-number
+-i, --ignore-case   不区分大小写
+-r, --recursive     按照目录
+-o, --only-matching 只显示匹配行中匹配正则表达式的那部分
+-v, --invert-match  排除
+-c, --count         统计url出现次数
+grep -nr
+grep -oP
+</code></pre>
+
+<ul>
+<li>过滤ip</li>
+</ul>
+
+<pre><code>192.168.100.100
+ifconfig|grep -oP &quot;([0-9]{1,3}\.){3}[0-9]{1,3}&quot;
+</code></pre>
+
+<ul>
+<li>过滤邮箱</li>
+</ul>
+
+<pre><code>cat &gt;&gt;tmp.txt&lt;&lt;EOF
+iher-_@qq.com
+hello
+EOF
+
+cat tmp.txt|grep -oP &quot;[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+&quot;
+</code></pre>
+
+<ul>
+<li>统计baidu关键字的url在这个大文件中出现的次数</li>
+</ul>
+
+<pre><code>$ cat &gt;file.txt&lt;&lt;EOF
+wtmp begins Mon Feb 24 14:26:08 2014
+192.168.0.1
+162.12.0.123
+&quot;123&quot;
+123&quot;&quot;123
+njuhwc@163.com
+njuhwc@gmil.com 123
+www.baidu.com
+tieba.baidu.com
+www.google.com
+www.baidu.com/search/index
+EOF
+
+grep -cn &quot;.*baidu.com.*&quot; file.txt
+3
+</code></pre>
+
+<h2 id="bash自动补全">bash自动补全</h2>
+
+<pre><code> yum install bash-com* -y
+
+ 我在dokcer命令tab可以补全了
+</code></pre>
+
+<h2 id="nginx-json日志格式标准版">nginx json日志格式标准版</h2>
+
+<p>参考: <a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/configmap.md">https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/configmap.md</a></p>
+
+<pre><code>log-format-upstream: '{ &quot;time&quot;: &quot;$time_iso8601&quot;, &quot;remote_addr&quot;: &quot;$proxy_protocol_addr&quot;,
+    &quot;x-forward-for&quot;: &quot;$proxy_add_x_forwarded_for&quot;, &quot;request_id&quot;: &quot;$request_id&quot;, &quot;remote_user&quot;:
+    &quot;$remote_user&quot;, &quot;bytes_sent&quot;: $bytes_sent, &quot;request_time&quot;: $request_time, &quot;status&quot;:
+    $status, &quot;vhost&quot;: &quot;$host&quot;, &quot;request_proto&quot;: &quot;$server_protocol&quot;, &quot;path&quot;: &quot;$uri&quot;,
+    &quot;request_query&quot;: &quot;$args&quot;, &quot;request_length&quot;: $request_length, &quot;duration&quot;: $request_time,
+    &quot;method&quot;: &quot;$request_method&quot;, &quot;http_referrer&quot;: &quot;$http_referer&quot;, &quot;http_user_agent&quot;:
+    &quot;$http_user_agent&quot; }'
+</code></pre>
+
+<h2 id="elk启动">elk启动</h2>
+
+<pre><code>nohup /bin/su - elk -c &quot;/usr/local/elasticsearch/bin/elasticsearch&quot; &gt; /data/es/es-start.log 2&gt;&amp;1 &amp;
+nohup /bin/su - elk -c &quot;/usr/local/kibana/bin/kibana&quot; &gt; /data/es/kibana-start.log 2&gt;&amp;1 &amp;
+nohup &quot;/usr/local/logstash/bin/logstash -f /data/es/conf/logstash/logstash.conf&quot; &gt; /data/es/logstash-start.log 2&gt;&amp;1 &amp;
+
+
+
+curl -XDELETE http://192.168.100.204:9200/.monitoring-kibana-6-2017.10.23
+
+健康:
+http://192.168.100.204:9200/_cat/health?v
+
+节点:
+http://192.168.100.204:9200/_cat/nodes?v
+
+
+查看index:
+http://192.168.100.204:9200/_cat/indices?v
+
+</code></pre>
+
+<h2 id="修改网卡名字">修改网卡名字</h2>
+
+<pre><code>vim /etc/udev/rules.d/70-persistent-net.rules
+
+vim /etc/sysconfig/network-scripts/ifcfg-eth0
+</code></pre>
+
+<h2 id="sshfs挂载-实现nfs效果">sshfs挂载(实现nfs效果)</h2>
+
+<ul>
+<li>仅需客户端配置(已做客户端sshkey无密访问服务端)</li>
+</ul>
+
+<pre><code>yum install -y sshfs
+
+  挂载
+sshfs -o allow_other,transform_symlinks root@192.168.14.133:/data /data
+  卸载
+fusermount -u /data
+</code></pre>
+
+<p>参考: <a href="https://www.91yun.co/archives/8731">https://www.91yun.co/archives/8731</a></p>
+
+<pre><code>我在logging模块里看到的这个注释
+
+#---------------------------------------------------------------------------
+# Configuration classes and functions
+#---------------------------------------------------------------------------
+</code></pre>
+
+<h2 id="python搜路径">python搜路径</h2>
+
+<pre><code>起因是有人问怎么把函数全局化,不用import即可随处调用
+
+os.getcwd() #当前py所在目录
+
+b.__file__ #这个模块的路径
+
+os.__module__ #这个函数在哪个模块
+</code></pre>
+
+<p>参考:<a href="http://blog.csdn.net/l_b_yuan/article/details/52260646">http://blog.csdn.net/l_b_yuan/article/details/52260646</a></p>
+
+<pre><code>os.path.abspath(path)  #返回绝对路径
+os.path.split(path     #将path分割成目录和文件名二元组返回
+os.path.dirname(path)  #返回path的目录。其实就是os.path.split(path)的第一个元素
+os.path.basename(path) #返回path最后的文件名
+os.path.exists(path)   #如果path存在，返回True；如果path不存在，返回False
+os.path.isabs(path)    #如果path是绝对路径，返回True
+os.path.isfile(path)   #如果path是一个存在的文件，返回True。否则返回False
+os.path.isdir(path)    #如果path是一个存在的目录，则返回True。否则返回False
+os.path.getatime(path) #返回path所指向的文件或者目录的最后存取时间
+os.path.getmtime(path) #返回path所指向的文件或者目录的最后修改时间
+s.path.join(path1[, path2[, ...]])  #将多个路径组合后返回，第一个绝对路径之前的参数将被忽略。
+&gt;&gt;&gt; os.path.join('c:\\', 'csv', 'test.csv')
+'c:\\csv\\test.csv'
+&gt;&gt;&gt; os.path.join('windows\temp', 'c:\\', 'csv', 'test.csv')
+'c:\\csv\\test.csv'
+&gt;&gt;&gt; os.path.join('/home/aa','/home/aa/bb','/home/aa/bb/c')
+'/home/aa/bb/c'
+</code></pre>
+
+<h2 id="python-env-和-vscode配置">python env  和 vscode配置</h2>
+
+<pre><code>pip install virtualenv
+pip install virtualenvwrapper
+pip install virtualenvwrapper-win
+mkvirtualenv --python==C:\Python27\python.exe py27env
+exit
+mkvirtualenv --python==C:\Python34\python.exe py34env
+
+workon
+
+
+{
+    &quot;workbench.colorTheme&quot;: &quot;Solarized Light&quot;,
+    &quot;window.zoomLevel&quot;: 1,
+    &quot;window.menuBarVisibility&quot;: &quot;default&quot;,
+    &quot;editor.wordWrap&quot;: &quot;on&quot;,
+    &quot;editor.fontSize&quot;: 16,
+    &quot;files.autoSave&quot;: &quot;afterDelay&quot;,
+    &quot;terminal.integrated.shell.windows&quot;: &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;,
+    &quot;editor.rulers&quot;: [80,120]
+}
+</code></pre>
+
+<h2 id="env配置文件">env配置文件</h2>
+
+<pre><code>•    ~/.bash_profile：用户每次登录时执行
+•    ~/.bashrc：每次进入新的Bash环境时执行
+•    ~/.bash_logout：用户每次退出登录时执行
+</code></pre>
+
+<h2 id="sedmail发邮件配置">sedmail发邮件配置</h2>
+
+<pre><code>yum install sendmail -y
+cat &gt;&gt;/etc/mail.rc&lt;&lt;EOF
+
+set from=xxx@tt.com
+set smtp=smtp.exmail.qq.com
+set smtp-auth-user=xxx@tt.com
+set smtp-auth-password=123456
+set smtp-auth=login
+EOF
+source /etc/mail.rc
+</code></pre>
+
+<ul>
+<li>发消息</li>
+</ul>
+
+<pre><code>echo &quot;test&quot;| mail -s &quot;邮件标题&quot; iher@foxmail.com
+</code></pre>
+
+<ul>
+<li>发文件</li>
+</ul>
+
+<pre><code>mail -s &quot;邮件标题&quot; iher@foxmail.com &lt; /etc/passwd
+</code></pre>
+
+<ul>
+<li>发附件</li>
+</ul>
+
+<pre><code>mail -s &quot;邮件标题&quot; -a /var/log/messages iher@Foxmail.com &lt; /etc/passwd
+</code></pre>
+
+<ul>
+<li>邮件相关目录</li>
+</ul>
+
+<pre><code>C6 postfix /var/spool/postfix/maildrop
+C5 sedmail /var/spool/clientmqueue
+</code></pre>
+
+<p>注: centos6.5已经不自动安装sendmail了所以没必要走这一步优化</p>
+
+<ul>
+<li>写脚本自动清理邮箱</li>
+</ul>
+
+<pre><code>mkdir -p /server/scripts
+
+cat /root/shell/spool_clean.sh
+
+#!/bin/sh
+find/var/spool/clientmqueue/-type f -mtime +30|xargs rm-f
+</code></pre>
+
+<pre><code>echo '*/30 * * * * /bin/sh /server/scripts/spool_clean.sh &gt;/dev/null 2&gt;&amp;1'&gt;&gt;/var/spool/cron/root
+</code></pre>
+
+<h2 id="locale字符集-面试">locale字符集-面试</h2>
+
+<ul>
+<li>查本地支持的所有字符集</li>
+</ul>
+
+<pre><code># locale -a
+</code></pre>
+
+<ul>
+<li>查当前使用的字符集</li>
+</ul>
+
+<pre><code>locale #调取了/etc/sysconfig/i18n
+</code></pre>
+
+<ul>
+<li>系统默认字符集:</li>
+</ul>
+
+<pre><code>export LANG='zh_CN.UTF-8'
+</code></pre>
+
+<h2 id="监控网卡实时流量">监控网卡实时流量</h2>
+
+<ul>
+<li>监控网卡流量历史流量</li>
+</ul>
+
+<pre><code>yum install sysstat
+sar -n DEV 1 5  #1s监控1次,共监控5次.
+sar -n DEV  (-n network)
+</code></pre>
+
+<pre><code>watch more /proc/net/dev
+</code></pre>
+
+<h2 id="find干掉超过10天的">find干掉超过10天的</h2>
+
+<ul>
+<li>mtime 10天内  10天外</li>
+</ul>
+
+<pre><code>find . -mtime +10 -exec rm -rf {} \;
+find . -mtime +10|xargs rm -f
+</code></pre>
+
+<p><img src="http://ww1.sinaimg.cn/large/9e792b8fgy1fj7blirtkaj20gc06lwf7" alt="" /></p>
+
+<h2 id="测试udp端口是否通-面试">测试udp端口是否通-面试</h2>
+
+<pre><code>$ nc -vuz 192.168.6.6 53
+Connection to 192.168.6.6 53 port [udp/domain] succeeded!
+</code></pre>
+
+<p>实际使用时可以只用-u参数，-u代表udp协议 ，-v代表详细模式，-z代表只监测端口不发送数据。</p>
+
+<h2 id="使用nc-tar传文件">使用nc+tar传文件</h2>
+
+<ul>
+<li>client发交互式到服务器的console</li>
+</ul>
+
+<pre><code>nc -l -u 8021             --server #可以配置tcpdump -i eth0 port 8021 -nnv抓包
+nc -u 192.168.6.52 8021   --client #交互式发送消息
+</code></pre>
+
+<ul>
+<li>client发文件到服务端console</li>
+</ul>
+
+<pre><code>server: nc -l -u 8021
+client: nc -u 192.168.6.52 8021 &lt; /etc/hosts
+</code></pre>
+
+<ul>
+<li>tar+nc传文件</li>
+</ul>
+
+<pre><code>server： tar -cf - /home/database  | nc -l 5677 #将/home/database文件
+client： nc 192.168.6.52 5677 | tar -xf -       #传到client的当前目录
+</code></pre>
+
+<h2 id="生成密码">生成密码：</h2>
+
+<pre><code>openssl rand -hex 8
+</code></pre>
+
+<pre><code>$mkpasswd -l 16 -s 2
+3Hte^bd-pkylSbf7
+</code></pre>
+
+<pre><code>echo &quot;ansible&quot;|passwd --stdin ansible #centos7改用户密码
+</code></pre>
+
+<h2 id="fstab挂载">fstab挂载</h2>
+
+<ul>
+<li>fstab挂载硬盘</li>
+</ul>
+
+<pre><code>cat /etc/fstab
+需挂载的设备                挂载点  fs类型   参数        备份 检查
+/dev/mapper/centos-data    /data  xfs      defaults    0 0
+</code></pre>
+
+<ul>
+<li>nfs挂载(centos7放fstab)</li>
+</ul>
+
+<pre><code>192.168.8.68:/data/backup/no75/confluence/data /data/confluence/  nfs     defaults        0 0
+</code></pre>
+
+<ul>
+<li>nfs挂载(centos6放/etc/rc.local里即可)</li>
+</ul>
+
+<pre><code>/usr/bin/mount -t nfs 192.168.8.68:/data/owncloud /data/owncloud-192.168.8.68
+</code></pre>
+
+<ul>
+<li>nfs服务端设置:</li>
+</ul>
+
+<pre><code>/data/backup/no75/confluence/data 192.168.8.0/24(rw,sync,no_root_squash)
+</code></pre>
+
+<ul>
+<li>(磁盘扩容)关于tmpfs空间满，会影响其中的服务使用吗</li>
+</ul>
+
+<pre><code>Filesystem Size Used Avail Use% Mounted on
+/dev/sda1 32G 1.3G 29G 5% /
+tmpfs 16G 16G 0 100% /dev/shm
+
+mount -o remount,size=18G /dev/shm
+</code></pre>
+
+<ul>
+<li>只读mount</li>
+</ul>
+
+<pre><code>Mount the file system and make it writeable
+mount -uw /
+
+Make the filesystem read only again.
+mount -ur /
+</code></pre>
+
+<h2 id="date命令小结">date命令小结</h2>
+
+<ul>
+<li>前一天日期</li>
+</ul>
+
+<pre><code>date  +%Y-%m-%d~%H-%M-%S -d &quot;-1 day&quot;
+</code></pre>
+
+<pre><code>date  &quot;+%Y-%m-%d %H-%M-%S&quot; -d &quot;-1 day&quot;
+</code></pre>
+
+<ul>
+<li>压缩带日期
+<code>
+tar zcvf etc_$(date +%F -d &quot;-1 day&quot;).tar.gz /etc/
+</code></li>
+</ul>
+
+<h2 id="系统时间优化">系统时间优化</h2>
+
+<ul>
+<li>时区校准</li>
+</ul>
+
+<pre><code>rm -rf /etc/localtime &amp;&amp; cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &amp;&amp; ntpdate ntp1.aliyun.com
+</code></pre>
+
+<ul>
+<li>设置同步时间</li>
+</ul>
+
+<pre><code>/user/sbin/ntpdate ntp1.aliyun.com
+echo '*/5 * * * * /usr/sbin/ntpdate ntp1.aliyun.com &gt;/dev/null 2 &gt;&amp;1' &gt;&gt;/var/spool/cron/root
+</code></pre>
+
+<ul>
+<li>手动修改时间</li>
+</ul>
+
+<pre><code>date -s &quot;2016/06/11 22:50&quot;
+</code></pre>
+
+<h2 id="过滤网卡ip">过滤网卡ip</h2>
+
+<pre><code>ifconfig eth0|grep -oP &quot;([0-9]{1,3}\.){3}[0-9]{1,3}&quot;|sed -n '1p'
+ifconfig|sed -n '2p'|sed -r 's#^.*addr:(.*) Bcast.*$#\1#g'
+ifconfig|sed -n '2p'|awk -F':' '{print $2}'|awk '{print $1}'
+</code></pre>
+
+<h2 id="回车擦除-h">回车擦除^H</h2>
+
+<pre><code>echo &quot;stty erase ^H&quot; &gt;&gt;/root/.bash_profile
+source /root/.bash_profile
+</code></pre>
+
+<h2 id="centos7安装nslookup-ifconfig">centos7安装nslookup ifconfig</h2>
+
+<p>How to install dig, host, and nslookup – bind-utils on CentOS:</p>
+
+<pre><code>yum install bind-utils -y [c6使用nslookup]
+yum install net-tools -y [c7使用ifconfig]
+</code></pre>
+
+<h2 id="selinux优化">selinux优化</h2>
+
+<pre><code>setenforce 0
+sed -i 's#SELINUX=enforcing#SELINUX=disabled#g' /etc/selinux/config
+getenforce
+/etc/init.d/iptables stop
+</code></pre>
+
+<h2 id="文件描述符优化">文件描述符优化</h2>
+
+<pre><code>ulimit -SHn 65535
+echo '* - nofile 65536' &gt;&gt;/etc/security/limits.conf
+
+echo &quot;* soft nproc 65535&quot; &gt;&gt;/etc/security/limits.conf
+echo &quot;* hard nproc 65535&quot; &gt;&gt;/etc/security/limits.conf
+echo &quot;* soft nofile 65535&quot; &gt;&gt;/etc/security/limits.conf
+echo &quot;* hard nofile 65535&quot; &gt;&gt;/etc/security/limits.conf
+</code></pre>
+
+<h2 id="清除系统版本banner">清除系统版本banner</h2>
+
+<pre><code>&gt; /etc/issuse
+&gt;/etc/redhat-release
+</code></pre>
+
+<h2 id="添加普通用户并进行sudo授权管理">添加普通用户并进行sudo授权管理</h2>
+
+<pre><code>$ useradd sunsky
+$ echo &quot;123456&quot;|passwd --stdin sunsky&amp;&amp;history –c
+$ visudo # 99gg
+在root ALL=(ALL) ALL  #此行下，添加如下内容
+sunsky ALL=(ALL) ALL
+lanny  ALL=(ALL) ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom #仅允许他执行这些命令
+</code></pre>
+
+<h2 id="ssh慢优化">ssh慢优化</h2>
+
+<pre><code>\cp /etc/ssh/sshd_config /etc/ssh/sshd_config.ori
+sed -i 's#\#UseDNS yes#UseDNS no#g' /etc/ssh/sshd_config
+sed -i 's#GSSAPIAuthentication yes#GSSAPIAuthentication no#g' /etc/ssh/sshd_config
+/etc/init.d/sshd restart
+
+
+Port 22345
+PermitRootLogin no
+PermitEmptyPasswords no
+UseDNS no
+ListenAddress 192.168.138.24
+GSSAPIAuthentication no
+</code></pre>
+
+<h2 id="crt设置超时">crt设置超时</h2>
+
+<pre><code>export TMOUT=10
+echo &quot;export TMOUT=10&quot; &gt;&gt;/etc/profile
+source /etc/profile
+</code></pre>
+
+<h2 id="vim安装优化">vim安装优化</h2>
+
+<pre><code>yum -y install vim-enhanced
+cat &gt;&gt;/etc/vimrc&lt;&lt;a
+set nu
+set cursorline
+set nobackup
+set ruler
+set autoindent
+set vb t_vb=
+set ts=4
+set expandtab
+set paste
+a
+. /etc/vimrc
+</code></pre>
+
+<h2 id="rsync安装配置">rsync安装配置</h2>
+
+<ul>
+<li>rsync server配置(rpm -qa|grep rsync):</li>
+</ul>
+
+<pre><code>cat /usr/local/rsync/rsync.conf
+
+
+uid = root
+gid = root
+use chroot = no
+max connections = 10
+strict modes = yes
+pid file = /var/run/rsyncd.pid
+lock file = /var/run/rsync.lock
+log file = /var/log/rsyncd.log
+[web]
+path = /code/pp100web/target/ROOT
+comment = web file
+ignore errors
+read only = no
+write only = no
+hosts allow = 192.168.14.132
+list = false
+uid = root
+gid = root
+auth users = webuser
+secrets file = /usr/local/rsync/rsync.passwd
+</code></pre>
+
+<ul>
+<li>重启rsync</li>
+</ul>
+
+<pre><code>kill -HUP `cat /var/run/rsyncd.pid`
+/usr/bin/rsync --daemon --config=/usr/local/rsync/rsync.conf
+
+ps -ef|grep rsync
+</code></pre>
+
+<ul>
+<li>配置允许同步的的客户端</li>
+</ul>
+
+<pre><code>vim /usr/local/rsync/rsync.conf
+hosts allow = 192.168.14.132,192.168.14.133
+</code></pre>
+
+<p>注意:密码文件统一600,且普通用户为谁,属主即为谁.</p>
+
+<h2 id="java环境变量-附带tomcat">java环境变量(附带tomcat)</h2>
+
+<pre><code>export JAVA_HOME=/usr/local/jdk
+export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+export CLASSPATH=.$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib:$JAVA_HOME/lib/tools.jar
+export TOMCAT_HOME=/usr/local/tomcat
+export CATALINA_BASE=&quot;/data/tomcat&quot;
+export PATH=/usr/local/mysql/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/jdk1.7.0_45/bin:/root/bin:/usr/local/jdk1.7.0_45/bin:/root/bin
+</code></pre>
+
+<h2 id="换源-安装常用软件">换源&amp;安装常用软件</h2>
+
+<pre><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
+yum clean all
+yum makecache
+yum install lrzsz ntpdate sysstat dos2unix wget telnet tree -y
+</code></pre>
+
+<h2 id="添加定时任务">添加定时任务</h2>
+
+<pre><code>crontab -l
+*/5 * * * * /usr/sbin/ntpdate times.windows.com &gt;/dev/null 2&gt;&amp;1
+</code></pre>
+
+<h2 id="优化退格键">优化退格键</h2>
+
+<pre><code>stty erase &quot;^H&quot; #追加到/etc/profile
+</code></pre>
+
+<h2 id="优化history">优化history:</h2>
+
+<pre><code>export HISTTIMEFORMAT=&quot;%F %T `whoami` &quot;
+echo &quot;export HISTTIMEFORMAT=&quot;%F %T `whoami` &quot;&quot; &gt;&gt; /etc/profile
+</code></pre>
+
+<h2 id="优化message-格式">优化message:格式</h2>
+
+<pre><code>export PROMPT_COMMAND='{ msg=$(history 1 | { read x y; echo $y; });logger &quot;[euid=$(whoami)]&quot;:$(who am i):[`pwd`]&quot;$msg&quot;;}'
+</code></pre>
+
+<h2 id="过滤日志">过滤日志</h2>
+
+<pre><code>cat /etc/salt/master |grep -v &quot;#&quot; | sed '/^$/d'
+
+grep -nir
+-i 不区分大小写
+-n 显示行号
+-r 查找目录, grep -r 'xx' .
+</code></pre>
+
+<h2 id="kill服务">kill服务</h2>
+
+<pre><code>/usr/bin/killall -HUP syslogd
+/bin/kill -USR1 $(cat /var/run/nginx.pid 2&gt;/dev/null) 2&gt;/dev/null || :
+</code></pre>
+
+<h2 id="禁止ping">禁止ping</h2>
+
+<pre><code>echo &quot;net.ipv4.icmp_echo_ignore_all=1&quot;&gt;&gt;/etc/sysctl.conf
+tail -1 /etc/sysctl.conf
+sysctl -p
+echo 1 &gt; /proc/sys/net/ipv4/ip_forward #这样好处可以tab
+</code></pre>
+
+<pre><code>sysctl -w net.ipv4.ip_forward=1 #好像没写到/etc/sysctl.conf里
+</code></pre>
+
+<h2 id="sed-在某行-指具体行号-前或后加一行内容">sed 在某行（指具体行号）前或后加一行内容</h2>
+
+<pre><code>sed -i 'N;4addpdf' a.txt
+sed -i 'N;4ieepdf' a.txt
+sed -i 'N;4a44444444444444444444444444testt' 1.log在第四行后加一行
+http://www.361way.com/sed-process-lines/2263.html
+</code></pre>
+
+<h2 id="关闭bell-需reboot">关闭bell:[需reboot]</h2>
+
+<pre><code>sed -i 's#^\#set bell-style none#set bell-style none#g' /etc/inputrc
+echo &quot;modprobe -r pcspkr&quot; &gt; /etc/modprobe.d/blacklist
+</code></pre>
+
+<h2 id="关掉ctrl-alt-delete关机">关掉ctrl+alt+delete关机</h2>
+
+<pre><code>\cp /etc/init/control-alt-delete.conf /etc/init/control-alt-delete.conf.bak
+sed -i 's#exec /sbin/shutdown -r now &quot;Control-Alt-Deletepressed&quot;#\#exec /sbin/shutdown -r now &quot;Control-Alt-Deletepressed&quot;#g'
+</code></pre>
+
+<pre><code>yum groupinstall base -y
+yum groupinstall core -y
+yum groupinstall development libs -y
+yum groupinstall development tools -y
+</code></pre>
+
+<h2 id="echo高亮显示">echo高亮显示</h2>
+
+<pre><code>echo -e &quot;\033[32m crontab has been added successfully \033[0m&quot;
+</code></pre>
+
+<h2 id="nfs安装配置">nfs安装配置</h2>
+
+<ul>
+<li>服务端&amp;客户端</li>
+</ul>
+
+<pre><code>yum install nfs-utils rpcbind -y
+</code></pre>
+
+<ul>
+<li>服务端:</li>
+</ul>
+
+<pre><code>/etc/init.d/rpcbind start
+ps -ef |grep rpc
+/etc/init.d/rpcbind status
+rpcinfo -p localhost
+</code></pre>
+
+<ul>
+<li>服务端配置共享目录</li>
+</ul>
+
+<pre><code>echo &quot;/data 10.0.0.0/24(rw,sync,no_root_squash)&quot; &gt;&gt; /etc/exports
+chkconfig rpcbind on
+chkconfig nfs on
+</code></pre>
+
+<ul>
+<li>客户端挂载</li>
+</ul>
+
+<pre><code>/etc/init.d/rpcbind start
+chkconfig rpcbind on
+showmount -e 10.1.1.10
+mount -t nfs 10.1.1.10:data /mnt
+
+写到/etc/rc.local里
+</code></pre>
+
+<h2 id="nginx编译安装">nginx编译安装</h2>
+
+<ul>
+<li>1.安装依赖</li>
+</ul>
+
+<pre><code>yum install pcre pcre-devel openssl openssl-devel –y
+</code></pre>
+
+<ul>
+<li>2.添加nginx用户</li>
+</ul>
+
+<pre><code>useradd -s /sbin/nologin -M nginx
+</code></pre>
+
+<ul>
+<li>3.编译安装</li>
+</ul>
+
+<pre><code>./configure --user=nginx --group=nginx --prefix=/usr/local/nginx-1.6.2 --with-http_stub_status_module --with-http_ssl_module
+make &amp;&amp; make install
+echo $?
+ln -s /usr/local/nginx-1.6.2 /usr/local/nginx
+</code></pre>
+
+<ul>
+<li>4.检查nginx.conf语法</li>
+</ul>
+
+<pre><code>/usr/local/sbin/nginx       # -t检查配置文件语法
+/usr/local/nginx/sbin/nginx # 启动
+</code></pre>
+
+<ul>
+<li>5.添加nginx服务到PATH</li>
+</ul>
+
+<pre><code>echo PATH=/application/nginx/sbin/:$PATH &gt;&gt; /etc/profile
+source /etc/profile
+
+netstat -ntulp |grep nginx
+lsof -i:80
+curl 192.168.14.151
+nginx -s stop
+nginx -s reload
+</code></pre>
+
+<ul>
+<li>7.nginx反代配置nignx.conf</li>
+</ul>
+
+<pre><code>worker_processes auto;
+events {
+  multi_accept on;
+  use epoll;
+  worker_connections 51200;
+}
+error_log stderr notice;
+
+worker_rlimit_nofile 65535;
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    server_info  off;
+    server_tag   off;
+    server_tokens  off;
+    server_name_in_redirect off;
+    client_max_body_size 20m;
+    client_header_buffer_size 16k;
+    large_client_header_buffers 4 16k;
+    sendfile        on;
+    tcp_nopush     on;
+    keepalive_timeout  65;
+    server_tokens on;
+    gzip  on;
+    gzip_min_length 1k;
+    gzip_buffers 4 16k;
+    gzip_proxied   any;
+    gzip_http_version 1.1;
+    gzip_comp_level 3;
+    gzip_types text/plain application/x-javascript text/css application/xml;
+    gzip_vary on;
+
+    upstream owncloud {
+        server 127.0.0.1:8000;
+    }
+
+    upstream confluence {
+        server 127.0.0.1:8090;
+    }
+
+
+    server {
+        listen       80;
+        server_name  owncloud.maotai.org;
+        location / {
+            proxy_next_upstream error timeout invalid_header http_500 http_503 http_404 http_502 http_504;
+            proxy_pass http://owncloud;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+    server {
+        listen       80;
+        server_name  confluence.maotai.org;
+        location / {
+            proxy_next_upstream error timeout invalid_header http_500 http_503 http_404 http_502 http_504;
+            proxy_pass http://confluence;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+    server {
+        listen  80;
+        server_name status-no189.maotai.org;
+        location /nginx_status {
+            stub_status on;
+            access_log off;
+        }
+    }
+}
+</code></pre>
+
+<h2 id="徒手生成10m的文件">徒手生成10M的文件</h2>
+
+<p>参考: <a href="https://linux.cn/article-4126-1.html">https://linux.cn/article-4126-1.html</a></p>
+
+<pre><code>head -c 10M &lt; /dev/urandom &gt; /var/log/log-file
+
+# 生成随机字符串
+cat /dev/urandom |tr -dc [:alnum:] |head -c 8
+</code></pre>
+
+<h2 id="logrotate-nginx日志切割">logrotate nginx日志切割</h2>
+
+<p>每天3点才切割问题: 参考: <a href="http://www.voidcn.com/article/p-tpivuevp-gn.html">http://www.voidcn.com/article/p-tpivuevp-gn.html</a></p>
+
+<pre><code>cat &gt; /etc/logrotate.d/nginx
+/usr/local/nginx/logs/*.log {
+    daily
+    missingok
+    rotate 7
+    dateext
+    compress
+    delaycompress
+    notifempty
+    sharedscripts
+    postrotate
+        if [ -f /usr/local/nginx/logs/nginx.pid ]; then
+            kill -USR1 `cat /usr/local/nginx/logs/nginx.pid`
+        fi
+    endscript
+}
+</code></pre>
+
+<h2 id="网卡配置">网卡配置</h2>
+
+<pre><code>DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=192.168.6.28
+NETMASK=255.255.255.0
+GATEWAY=192.168.6.1
+</code></pre>
+
+<h2 id="修改console提示符">修改console提示符</h2>
+
+<ul>
+<li>Ubuntu的promote</li>
+</ul>
+
+<pre><code>export PS1=&quot;\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$&quot;
+</code></pre>
+
+<ul>
+<li>centos的promote</li>
+</ul>
+
+<pre><code>export PS1=&quot;[\u@\h \W]\$&quot;
+</code></pre>
+
+<h2 id="yum安装lamp">yum安装lamp</h2>
+
+<ul>
+<li>yum安装lamp:</li>
+</ul>
+
+<pre><code>yum install -y httpd php php-cli php-common php-pdo php-gd
+yum install -y httpd php php-cli php-common php-pdo php-gd mysql mysql-server php-mysql
+yum install -y httpd php php-ldap php-gd
+</code></pre>
+
+<ul>
+<li>php配置:</li>
+</ul>
+
+<pre><code>vim /etc/php.ini
+729 post_max_size = 16M
+946 date.timezone = PRC #(中华人民共和国)
+</code></pre>
+
+<h2 id="批量创建用户脚本">批量创建用户脚本</h2>
+
+<pre><code>cat adduser.sh
+
+#!/bin/bash
+# Add system user
+for ldap in {1..5};do
+if id user${ldap} &amp;&gt; /dev/null;then
+echo &quot;System account already exists&quot;
+else
+adduser user${ldap}
+echo user${ldap} | passwd --stdin user${ldap} &amp;&gt; /dev/null
+echo &quot;user${ldap} system add finish&quot;
+fi
+done
+# chmod +x adduser.sh
+# ./adduser.sh
+# id user1
+uid=502(user1) gid=502(user1) groups=502(user1)
+</code></pre>
+
+<pre><code>useradd test -u 6000 -g 6000 -s /sbin/nologin -M -d /dev/null
+</code></pre>
+
+<h2 id="shell-和-的区别">[shell] $*和$@的区别</h2>
+
+<ul>
+<li>单独的  $*和$@ 没区别</li>
+<li>&rdquo;$*&ldquo;和&rdquo;$@&ldquo;区别如下</li>
+</ul>
+
+<pre><code>[root@node1 ~]# cat test.sh
+#!/bin/sh
+
+for i in &quot;$*&quot;;do
+echo $i
+done
+[root@node1 ~]# sh test.sh 1 2 3 4
+1 2 3 4
+
+[root@node1 ~]# cat test.sh
+#!/bin/sh
+
+for i in &quot;$@&quot;;do
+echo $i
+done
+[root@node1 ~]# sh test.sh 1 2 3 4 5
+1
+2
+3
+4
+5
+</code></pre>
+
+<h2 id="shell-linux-exec与重定向-http-xstarcd-github-io-wiki-shell-exec-redirect-html">[shell] <a href="http://xstarcd.github.io/wiki/shell/exec_redirect.html">linux exec与重定向</a></h2>
+
+<h2 id="shell-shell学习之变量-http-lovelace-blog-51cto-com-1028430-1211141">[shell] <a href="http://lovelace.blog.51cto.com/1028430/1211141">shell学习之变量</a></h2>
+
+<h2 id="shell-定义列表">[shell] 定义列表</h2>
+
+<ul>
+<li>使用小括号为数组赋值</li>
+</ul>
+
+<p><code>a=（1 2 3）</code>注意: 默认空格隔开</p>
+
+<ul>
+<li>为数组b赋值-方法1</li>
+</ul>
+
+<pre><code>$ b=(bbs www http ftp)
+$ echo ${b[*]}
+bbs www http ftp
+</code></pre>
+
+<ul>
+<li>打印出第一个和第三个数据项</li>
+</ul>
+
+<pre><code>$ echo ${b[0]};echo '*******';echo ${b[2]}
+bbs
+*******
+http
+</code></pre>
+
+<p>注: 记住是小括号，不是大括号</p>
+
+<ul>
+<li>为数组b赋值-方法2</li>
+</ul>
+
+<pre><code>name=(
+alice
+bob
+cristin
+danny
+)
+
+for i in &quot;${!name[@]}&quot;;do
+echo ${name[$i]}
+done
+</code></pre>
+
+<ul>
+<li>取得数组元素的个数-方法1</li>
+</ul>
+
+<pre><code>length=${#array_name[@]}
+</code></pre>
+
+<ul>
+<li>取得数组元素的个数-方法2</li>
+</ul>
+
+<pre><code>length=${#array_name[*]}
+</code></pre>
+
+<ul>
+<li>取得数组单个元素的长度</li>
+</ul>
+
+<pre><code>lengthn=${#array_name[n]}
+</code></pre>
+
+<p>优化小结:
+一清： 定时清理日志/var/spool/clientsqueue
+一精： 精简开机启动服务
+一增： 增大文件描述符
+两优： linux内核参数的优化、yum源优化
+四设：设置系统的字符集、设置ssh登录限制、设置开机的提示信息与内核信息、设置block的大小
+七其他：文件系统优化、sync数据同步写入磁盘、不更新时间戳、锁定系统关键文件、时间同步、sudo集权管理、关闭防火墙和selinux</p>
+
+<p><a href="http://www.lvtao.net/server/centos-server-setup.html">本文 centos 6.5 优化 的项有18处:</a>
+- 1、centos6.5最小化安装后启动网卡
+- 2、ifconfig查询IP进行SSH链接
+- 3、更新系统源并且升级系统
+- 4、系统时间更新和设定定时任
+- 5、修改ip地址、网关、主机名、DNS
+- 6、关闭selinux，清空iptables
+- 7、创建普通用户并进行sudo授权管理
+- 8、修改SSH端口号和屏蔽root账号远程登陆
+- 9、锁定关键文件系统（禁止非授权用户获得权限）
+- 10、精简开机自启动服务
+- 11、调整系统文件描述符大小
+- 12、设置系统字符集
+- 13、清理登陆的时候显示的系统及内核版本
+- 14、内核参数优化
+- 15、定时清理/var/spool/clientmqueue
+- 16、删除不必要的系统用户和群组
+- 17、关闭重启ctl-alt-delete组合键
+- 18、设置一些全局变量</p>
+
+<h2 id="优化内核">优化内核:</h2>
+
+<pre><code>\cp /etc/sysctl.conf /etc/sysctl.conf.$(date +%F)
+cat &gt;&gt;/etc/sysctl.conf&lt;&lt;EOF
+net.ipv4.tcp_fin_timeout = 2
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_tw_recycle = 1
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_keepalive_time = 600
+net.ipv4.ip_local_port_range = 4000 65000
+net.ipv4.tcp_max_syn_backlog = 16384
+net.ipv4.tcp_max_tw_buckets = 36000
+net.ipv4.route.gc_timeout = 100
+net.ipv4.tcp_syn_retries = 1
+net.ipv4.tcp_synack_retries = 1
+net.core.somaxconn = 16384
+net.core.netdev_max_backlog = 16384
+net.ipv4.tcp_max_orphans = 16384
+net.netfilter.nf_conntrack_max = 25000000
+net.netfilter.nf_conntrack_tcp_timeout_established = 180
+net.netfilter.nf_conntrack_tcp_timeout_time_wait = 120
+net.netfilter.nf_conntrack_tcp_timeout_close_wait = 60
+net.netfilter.nf_conntrack_tcp_timeout_fin_wait = 120
+EOF
+sysctl -p
+</code></pre>
+
+<p>注: 以下参数是对centos6.x的iptables防火墙的优化，防火墙不开会有提示，可以忽略不理。
+如果是centos5.X需要吧netfilter.nf_conntrack替换成ipv4.netfilter.ip
+centos5.X为net.ipv4.ip_conntrack_max = 25000000</p>
+
+<pre><code>net.nf_conntrack_max = 25000000
+net.netfilter.nf_conntrack_max = 25000000
+net.netfilter.nf_conntrack_tcp_timeout_established = 180
+net.netfilter.nf_conntrack_tcp_timeout_time_wait = 120
+net.netfilter.nf_conntrack_tcp_timeout_close_wait = 60
+net.netfilter.nf_conntrack_tcp_timeout_fin_wait = 120
+</code></pre>
+
+<h2 id="linux更换内核">linux更换内核</h2>
+
+<p><a href="https://www.91yun.co/archives/795">参考</a></p>
+
+<p><strong>CentOS6</strong> 内核更换为： 2.6.32-504.3.3.el6.x86_64</p>
+
+<pre><code>rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm
+rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-2.6.32-504.3.3.el6.x86_64.rpm --force
+
+</code></pre>
+
+<p><strong>CentOS7</strong> 内核更换为： 3.10.0-229.1.2.el7.x86_64</p>
+
+<pre><code>rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force
+
+</code></pre>
+
+<h5 id="查看是否成功">查看是否成功</h5>
+
+<pre><code>reboot
+uname -r
+rpm -qa | grep kernel
+
+百度:
+site:centos.org 你需要的内核
+site:centos.org kernel-2.6.32-504.3.3.el6.x86_64.rpm
+</code></pre>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://lannyMa.github.io/posts/ansible%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/" data-toggle="tooltip" data-placement="top" title="Ansible常用知识点">&larr; 前一篇</a>
+                </li>
+                 
+            </ul>
+            
+            <div>
+                 
+                <h2>See Also</h2>
+                <ul>
+                    
+                    <li><a href="/posts/ansible%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/">Ansible常用知识点</a></li>
+                    
+                </ul>
+                
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Sat Feb 10, 2018</h4>
+    </section>
+    <h5 id="wc">5400 Words|Read in about 11 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://lannyMa.github.io/tags/linux/">linux</a> &nbsp;
+        
+        <a href="https://lannyMa.github.io/tags/svc/">svc</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+            
+        </div>
+    </div>
+    </section>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:ihorse@foxmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/maotai" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/lannyMa" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="https://lannyMa.github.io/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+        &copy;2017-2018
+          
+            
+              Mao Tai
+                      
+          
+          
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://lannyMa.github.io/">毛台在线</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io">Hugo v0.36</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 移植自 <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/bootstrap.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/photoswipe-ui-default.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/photoswipe.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/auto-render.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/main.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/prism.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/katex.min.js"></script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+
+
+  </body>
+</html>
+

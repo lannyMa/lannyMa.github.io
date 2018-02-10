@@ -8,10 +8,19 @@
     <language>zh-cn</language>
     <managingEditor>ihorse@foxmail.com (Mao Tai)</managingEditor>
     <webMaster>ihorse@foxmail.com (Mao Tai)</webMaster>
-    <lastBuildDate>Fri, 09 Feb 2018 16:00:15 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 10 Feb 2018 14:49:15 +0800</lastBuildDate>
     
 	<atom:link href="https://lannyMa.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>linux常用手头命令</title>
+      <link>https://lannyMa.github.io/posts/linux%E5%B8%B8%E7%94%A8%E6%89%8B%E5%A4%B4%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sat, 10 Feb 2018 14:49:15 +0800</pubDate>
+      <author>ihorse@foxmail.com (Mao Tai)</author>
+      <guid>https://lannyMa.github.io/posts/linux%E5%B8%B8%E7%94%A8%E6%89%8B%E5%A4%B4%E5%91%BD%E4%BB%A4/</guid>
+      <description>相关代码 centos7修改网卡名字 net.ifnames=0 biosdevname=0 man手册中文 参考:http://www.kernel.org/pub/linux/docs/man-</description>
+    </item>
     
     <item>
       <title>Ansible常用知识点</title>
