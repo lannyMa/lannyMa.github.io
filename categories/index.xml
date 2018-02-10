@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 毛台在线</title>
+    <link>https://lannyMa.github.io/categories/</link>
+    <description>Recent content in Categories on 毛台在线</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>ihorse@foxmail.com (Mao Tai)</managingEditor>
+    <webMaster>ihorse@foxmail.com (Mao Tai)</webMaster>
+    
+	<atom:link href="https://lannyMa.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang</title>
+      <link>https://lannyMa.github.io/categories/golang/</link>
+      <pubDate>Sun, 04 Feb 2018 09:55:58 +0800</pubDate>
+      <author>ihorse@foxmail.com (Mao Tai)</author>
+      <guid>https://lannyMa.github.io/categories/golang/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
